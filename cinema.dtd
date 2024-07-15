@@ -1,0 +1,22 @@
+<!ELEMENT cinéma (film+)>
+<!ELEMENT film (titre, durée, genres, réalisateur, langue, acteurs, annee,  notes?, synopsis, horaires)>
+<!ELEMENT titre (#PCDATA)>
+<!ELEMENT durée EMPTY>
+<!ATTLIST durée heures NMTOKEN #REQUIRED
+               minutes NMTOKEN #REQUIRED>
+<!ELEMENT genres (genre+)>
+<!ELEMENT genre (#PCDATA)>
+<!ELEMENT réalisateur (#PCDATA)>
+<!ELEMENT langue (#PCDATA)>
+<!ELEMENT acteurs (acteur+)>
+<!ELEMENT acteur (#PCDATA)>
+<!ELEMENT année (#PCDATA)>
+<!ELEMENT notes (note*)>
+<!ELEMENT note (#PCDATA)>
+<!ATTLIST note source CDATA #REQUIRED>
+<!ELEMENT synopsis (#PCDATA)>
+<!ELEMENT horaires (horaire+)>
+<!ELEMENT horaire EMPTY>
+<!ATTLIST horaire jour NMTOKEN #REQUIRED
+                  heure NMTOKEN #REQUIRED
+                  minute NMTOKEN "00">
