@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE cinéma SYSTEM "cinema.dtd">
+
+<cinéma>
+    <film>
+        <titre>Tenet</titre>
+        <durée heures="2" minutes="30" />
+        <genres>
+            <genre>Action</genre>
+            <genre>Thiller</genre>
+            <genre>Espionnage</genre>
+        </genres>
+        <réalisateur>Christopher Nolan</réalisateur>
+        <langue>VO</langue>
+        <acteurs>
+            <acteur>John David Washington</acteur>
+            <acteur>Robert Pattinson</acteur>
+            <acteur>Elizabeth Debicki</acteur>
+        </acteurs>
+        <année>2020</année>
+        <notes>
+            <note source="presse">3.6</note>
+            <note source="spectateur">4.1</note>
+        </notes>
+        <synopsis>
+            Muni d'un seul mot – Tenet – et décidé à se battre pour sauver le monde, notre protagoniste sillonne l'univers crépusculaire de l'espionnage international.
+            Sa mission le projettera dans une dimension qui dépasse le temps.
+            Pourtant, il ne s'agit pas d'un voyage dans le temps, mais d'un renversement temporel...
+        </synopsis>
+        <horaires>
+            <!-- <horaire>Mer, Sam : 14:00 | 16:40 | 19:40 | 22:10</horaire> -->
+            <horaire jour="lundi" heure="14" />
+            <horaire jour="lundi" heure="19" minute="40" />
+            <horaire jour="lundi" heure="22" minute="10" />
+            <horaire jour="mardi" heure="14" />
+            <horaire jour="mardi" heure="19" minute="40"/>
+            <horaire jour="mardi" heure="22" minute="10"/>
+            <horaire jour="mercredi" heure="14"/>
+            <horaire jour="mercredi" heure="16" minute="40"/>
+            <horaire jour="mercredi" heure="19" minute="40"/>
+            <horaire jour="mercredi" heure="22" minute="10"/>
+            <horaire jour="jeudi" heure="14"/>
+            <horaire jour="jeudi" heure="19" minute="40"/>
+            <horaire jour="jeudi" heure="22" minute="10"/>
+            <horaire jour="vendredi" heure="14"/>
+            <horaire jour="vendredi" heure="19" minute="40"/>
+            <horaire jour="vendredi" heure="22" minute="10"/>
+            <horaire jour="samedi" heure="14"/>
+            <horaire jour="samedi" heure="16" minute="40"/>
+            <horaire jour="samedi" heure="19" minute="40"/>
+            <horaire jour="samedi" heure="22" minute="10"/>
+            <horaire jour="dimanche" heure="10" minute="20"/>
+            <horaire jour="dimanche" heure="14" />
+            <horaire jour="dimanche" heure="16" minute="40"/>
+            <horaire jour="dimanche" heure="20" minute="20"/>
+        </horaires>
+    </film>
+    <!-- <film catégorie="Action">
+        <titre>Drive</titre>
+        <genres>
+            <genre>Action</genre>
+            <genre>Thiller</genre>
+        </genres>
+        <réalisateur>Nicolas Winding Refn</réalisateur>
+        <langue>VO</langue>
+        <nationalités>
+            <nationalité>américain</nationalité>
+        </nationalités>
+        <acteurs>
+            <acteur>Ryan Gosling</acteur>
+            <acteur>Carey Mulligan</acteur>
+            <acteur>Bryan Cranston</acteur>
+        </acteurs>
+        <année>2011</année>
+        <durée heures="1" minutes="40" />
+        <notes>
+            <note source="presse">4.4</note>
+            <note source="spectateur">4.1</note>
+        </notes>
+        <synopsis>Un jeune homme solitaire, "The Driver", conduit le jour à Hollywood pour le cinéma en tant que cascadeur et la nuit pour des truands. Ultra professionnel et peu bavard, il a son propre code de conduite. Jamais il n’a pris part aux crimes de ses employeurs autrement qu’en conduisant - et au volant, il est le meilleur !
+Shannon, le manager qui lui décroche tous ses contrats, propose à Bernie Rose, un malfrat notoire, d’investir dans un véhicule pour que son poulain puisse affronter les circuits de stock-car professionnels. Celui-ci accepte mais impose son associé, Nino, dans le projet.
+C’est alors que la route du pilote croise celle d’Irene et de son jeune fils. Pour la première fois de sa vie, il n’est plus seul.
+Lorsque le mari d’Irene sort de prison et se retrouve enrôlé de force dans un braquage pour s’acquitter d’une dette, il décide pourtant de lui venir en aide. L’expédition tourne mal…
+Doublé par ses commanditaires, et obsédé par les risques qui pèsent sur Irene, il n’a dès lors pas d’autre alternative que de les traquer un à un…
+        </synopsis>
+        <séances>
+            <séance jour="lundi">16:00</séance>
+            <séance jour="lundi">20:30</séance>
+            <séance jour="lundi">22:40</séance>
+            <séance jour="mardi">13:30</séance>
+            <séance jour="mardi">20:30</séance>
+            <séance jour="mardi">22:40</séance>
+            <séance jour="mercredi">13:30</séance>
+            <séance jour="mercredi">17:50</séance>
+            <séance jour="mercredi">20:30</séance>
+            <séance jour="mercredi">22:40</séance>
+            <séance jour="jeudi">13:30</séance>
+            <séance jour="jeudi">17:50</séance>
+            <séance jour="jeudi">20:30</séance>
+            <séance jour="vendredi">13:30</séance>
+            <séance jour="vendredi">20:30</séance>
+            <séance jour="vendredi">22:40</séance>
+            <séance jour="samedi">13:30</séance>
+            <séance jour="samedi">17:50</séance>
+            <séance jour="samedi">20:30</séance>
+            <séance jour="samedi">22:40</séance>
+            <séance jour="dimanche">10:20</séance>
+            <séance jour="dimanche">13:30</séance>
+            <séance jour="dimanche">17:50</séance>
+            <séance jour="dimanche">20:20</séance>
+            <séance jour="dimanche">22:40</séance>
+        </séances>
+    </film>
+    <film catégorie="Comédie">
+        <titre>Le Daim</titre>
+        <genres>
+            <genre>Comédie</genre>
+        </genres>
+        <réalisateur>Quentin Dupieux</réalisateur>
+        <langue>français</langue>
+        <nationalités>
+            <nationalité>français</nationalité>
+        </nationalités>
+        <acteurs>
+            <acteur>Jean Dujardin</acteur>
+            <acteur>Adèle Haenel</acteur>
+            <acteur>Albert Delpy</acteur>
+        </acteurs>
+        <année>2011</année>
+        <durée heures="1" minutes="17" />
+        <notes>
+            <note source="presse">3.8</note>
+            <note source="spectateur">3.1</note>
+        </notes>
+        <synopsis>Georges, la quarantaine, quitte du jour au lendemain sa femme et son travail pour s'offrir le blouson de ses rêves, une veste en daim à franges. Le vendeur lui cède avec un caméscope numérique. Très fier du nouveau style que lui confère son achat, Georges prend une chambre d'hôtel dans une station des Pyrénées. Dans un bar, il fait la connaissance de Denise, une serveuse cinéphile qui rêve de devenir monteuse. Il lui fait croire qu'il est un réalisateur en repérage pour un prochain tournage. L'homme développe par ailleurs une véritable obsession pour son blouson. Quentin Dupieux continue la construction de son oeuvre singulière dans un film où l'absurde le dispute au non-sens, avec une pointe de sauvagerie.
+        </synopsis>
+        <séances>
+            <séance jour="lundi">18:35</séance>
+            <séance jour="lundi">20:30</séance>
+            <séance jour="mardi">18:35</séance>
+            <séance jour="mardi">22:40</séance>
+            <séance jour="mercredi">16:30</séance>
+            <séance jour="mercredi">22:40</séance>
+            <séance jour="jeudi">18:35</séance>
+            <séance jour="jeudi">20:30</séance>
+            <séance jour="vendredi">18:35</séance>
+            <séance jour="vendredi">20:30</séance>
+            <séance jour="samedi">18:35</séance>
+            <séance jour="samedi">20:30</séance>
+            <séance jour="samedi">22:40</séance>
+            <séance jour="dimanche">9:30</séance>
+            <séance jour="dimanche">18:35</séance>
+            <séance jour="dimanche">20:20</séance>
+            <séance jour="dimanche">22:40</séance>
+        </séances>
+    </film>
+    <film catégorie="Animation">
+        <titre>Le voyage de Chihiro</titre>
+        <genres>
+            <genre>Animation</genre>
+            <genre>Aventure</genre>
+        </genres>
+        <réalisateur>Hayao Miyazaki</réalisateur>
+        <langue>français</langue>
+        <nationalités>
+            <nationalité>japonais</nationalité>
+        </nationalités>
+        <acteurs>
+            <acteur>Rumi Hiiragi</acteur>
+            <acteur>Miyu Irino</acteur>
+            <acteur>Mari Natsuki</acteur>
+        </acteurs>
+        <année>2002</année>
+        <durée heures="2" minutes="4" />
+        <notes>
+            <note source="presse">4.8</note>
+            <note source="spectateur">4.4</note>
+        </notes>
+        <synopsis>Chihiro, une fillette de 10 ans, est en route vers sa nouvelle demeure en compagnie de ses parents. Au cours du voyage, la famille fait une halte dans un parc à thème qui leur paraît délabré. Lors de la visite, les parents s’arrêtent dans un des bâtiments pour déguster quelques mets très appétissants, apparus comme par enchantement. Hélas cette nourriture les transforme en porcs. Prise de panique, Chihiro s’enfuit et se retrouve seule dans cet univers fantasmagorique ; elle rencontre alors l’énigmatique Haku, son seul allié dans cette terrible épreuve...
+        </synopsis>
+        <séances>
+            <séance jour="lundi">14:30</séance>
+            <séance jour="lundi">18:00</séance>
+            <séance jour="lundi">20:30</séance>
+            <séance jour="mardi">14:30</séance>
+            <séance jour="mardi">18:00</séance>
+            <séance jour="mardi">20:30</séance>
+            <séance jour="mercredi">10:30</séance>
+            <séance jour="mercredi">14:50</séance>
+            <séance jour="mercredi">16:40</séance>
+            <séance jour="mercredi">18:50</séance>
+            <séance jour="mercredi">21:00</séance>
+            <séance jour="mercredi">22:20</séance>
+            <séance jour="jeudi">14:30</séance>
+            <séance jour="jeudi">18:00</séance>
+            <séance jour="jeudi">20:30</séance>
+            <séance jour="vendredi">13:30</séance>
+            <séance jour="vendredi">17:50</séance>
+            <séance jour="vendredi">20:30</séance>
+            <séance jour="samedi">10:30</séance>
+            <séance jour="samedi">14:50</séance>
+            <séance jour="samedi">16:40</séance>
+            <séance jour="samedi">18:50</séance>
+            <séance jour="samedi">21:00</séance>
+            <séance jour="samedi">22:20</séance>
+            <séance jour="dimanche">10:20</séance>
+            <séance jour="dimanche">13:30</séance>
+            <séance jour="dimanche">17:50</séance>
+            <séance jour="dimanche">20:20</séance>
+            <séance jour="dimanche">22:40</séance>
+        </séances>
+    </film>
+    <film catégorie="Science Fiction">
+        <titre>Le 5e élément</titre>
+        <genres>
+            <genre>Science Fiction</genre>
+            <genre>Action</genre>
+        </genres>
+        <réalisateur>Luc Besson</réalisateur>
+        <langue>français</langue>
+        <nationalités>
+            <nationalité>français</nationalité>
+        </nationalités>
+        <acteurs>
+            <acteur>Bruce Willis</acteur>
+            <acteur>Milla Jovovich</acteur>
+            <acteur>Chris Tucker</acteur>
+        </acteurs>
+        <année>1997</année>
+        <durée heures="2" minutes="6" />
+        <notes>
+            <note source="presse">3.0</note>
+            <note source="spectateur">4.2</note>
+        </notes>
+        <synopsis>Au XXIII siècle, dans un univers étrange et coloré, où tout espoir de survie est impossible sans la découverte du cinquième élément, un héros affronte le mal pour sauver l'humanité.
+        </synopsis>
+        <séances>
+            <séance jour="lundi">14:00</séance>
+            <séance jour="lundi">19:40</séance>
+            <séance jour="lundi">22:10</séance>
+            <séance jour="mardi">14:00</séance>
+            <séance jour="mardi">19:40</séance>
+            <séance jour="mardi">22:10</séance>
+            <séance jour="mercredi">14:00</séance>
+            <séance jour="mercredi">16:40</séance>
+            <séance jour="mercredi">19:40</séance>
+            <séance jour="mercredi">22:10</séance>
+            <séance jour="jeudi">14:00</séance>
+            <séance jour="jeudi">19:40</séance>
+            <séance jour="jeudi">22:10</séance>
+            <séance jour="vendredi">14:00</séance>
+            <séance jour="vendredi">19:40</séance>
+            <séance jour="vendredi">22:10</séance>
+            <séance jour="samedi">14:00</séance>
+            <séance jour="samedi">16:40</séance>
+            <séance jour="samedi">19:40</séance>
+            <séance jour="samedi">22:10</séance>
+            <séance jour="dimanche">10:20</séance>
+            <séance jour="dimanche">14:00</séance>
+            <séance jour="dimanche">16:40</séance>
+            <séance jour="dimanche">20:20</séance>
+        </séances>
+    </film> -->
+</cinéma>
