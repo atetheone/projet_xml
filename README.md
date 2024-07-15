@@ -71,8 +71,6 @@ Pour le moment, les fonctionnalit√©s de modification et de suppression doivent √
 
 ## Contributeurs
 
-## Contributeurs
-
 - [TOUGUE ARISTIDE ATE](https://github.com/atetheone) 
 - [MAGUETTE NDIAYE](https://github.com/onlyMaguette)
 - [BACAR IMANE](https://github.com/username3)
