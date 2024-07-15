@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE restaurants SYSTEM "restaurants.dtd">
+
+<restaurants>
+    <restaurant>
+        <coordonnees>
+            <nom>Le Gourmet</nom>
+            <adresse>123 Rue de Paris, Dakar</adresse>
+            <restaurateur>Jean Dupont</restaurateur>
+          <description>
+              <paragraphes>Un restaurant offrant une cuisine française exquise.</paragraphes>
+              <paragraphes>
+                  <image url="https://example.com/image1.jpg" position="gauche"/>
+              </paragraphes>
+              <paragraphes>
+                  <liste>
+                      <item>Ambiance chaleureuse</item>
+                      <item>Service rapide</item>
+                  </liste>
+              </paragraphes>
+              <paragraphes>
+                  <important>Ne manquez pas nos desserts maison !</important>
+              </paragraphes>
+          </description>
+        </coordonnees>
+        <carte>
+            <plat id="p1">
+                <nom>Salade de chèvre chaud</nom>
+                <type>Entrée</type>
+                <prix devise="XOF">5000</prix>
+                <platDescription>Une délicieuse salade avec du fromage de chèvre chaud.</platDescription>
+            </plat>
+            <plat id="p2">
+                <nom>Boeuf bourguignon</nom>
+                <type>Plat</type>
+                <prix devise="XOF">12000</prix>
+                <platDescription>Un classique de la cuisine française.</platDescription>
+            </plat>
+        </carte>
+        <menus>
+            <menu plats="p1 p2">
+                <titre>Menu Dégustation</titre>
+                <menuDescription>Un menu complet pour découvrir nos spécialités.</menuDescription>
+                <prix devise="XOF">20000</prix>
+            </menu>
+        </menus>
+    </restaurant>
+    <!-- <restaurant>
+        <coordonnees>
+            <nom>Chez Fatou</nom>
+            <adresse>45 Avenue Léopold Sédar Senghor, Dakar</adresse>
+            <restaurateur>Fatou Diop</restaurateur>
+        </coordonnees>
+        <description>
+            <paragraphes>Restaurant spécialisé dans la cuisine sénégalaise.</paragraphes>
+            <paragraphes>
+                <image url="https://example.com/image2.jpg" position="droite"/>
+            </paragraphes>
+            <paragraphes>
+                <important>Essayez notre spécialité : le Thieboudienne !</important>
+            </paragraphes>
+        </description>
+        <carte>
+            <plat>
+                <nom>Thieboudienne</nom>
+                <type>Plat</type>
+                <prix>8000 FCFA</prix>
+                <platDescription>Le plat national du Sénégal, un délice de riz au poisson.</platDescription>
+            </plat>
+            <plat>
+                <nom>Yassa Poulet</nom>
+                <type>Plat</type>
+                <prix>7500 FCFA</prix>
+                <platDescription>Du poulet mariné dans une sauce à base d'oignons et de citron.</platDescription>
+            </plat>
+        </carte>
+        <menus>
+            <menu>
+                <titre>Menu Sénégal</titre>
+                <menuDescription>Un menu pour découvrir les saveurs du Sénégal.</menuDescription>
+                <prix>15000 FCFA</prix>
+                <elements>
+                    <plat>
+                        <nom>Thieboudienne</nom>
+                        <type>Plat</type>
+                        <prix>8000 FCFA</prix>
+                        <platDescription>Le plat national du Sénégal, un délice de riz au poisson.</platDescription>
+                    </plat>
+                    <plat>
+                        <nom>Yassa Poulet</nom>
+                        <type>Plat</type>
+                        <prix>7500 FCFA</prix>
+                        <platDescription>Du poulet mariné dans une sauce à base d'oignons et de citron.</platDescription>
+                    </plat>
+                </elements>
+            </menu>
+        </menus>
+    </restaurant> -->
+</restaurants>
