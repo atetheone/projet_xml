@@ -2,7 +2,7 @@
 require 'models/Cinema.php';
 require 'models/Film.php';
 
-class FilmController {
+class CinemaController {
   private $cinema;
 
   public function __construct() {
@@ -17,7 +17,7 @@ class FilmController {
   public function add() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $film = new Film(
-        uniqid(),
+        'f' . uniqid(),
         $_POST['titre'],
         $_POST['duree_heures'],
         $_POST['duree_minutes'],
