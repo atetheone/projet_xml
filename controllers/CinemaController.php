@@ -16,12 +16,20 @@ class FilmController {
 
     public function add() {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $title = $_POST['title'];
-        $director = $_POST['director'];
-        $year = $_POST['year'];
-        $genre = $_POST['genre'];
-
-        $film = new Film($title, $director, $year, $genre);
+        $film = new Film(
+        uniqid(),
+        $_POST['titre'],
+        $_POST['duree_heures'],
+        $_POST['duree_minutes'],
+        explode(',', $_POST['genres']),
+        $_POST['realisateur'],
+        $_POST['langue'],
+        explode(',', $_POST['acteurs']),
+        $_POST['annee'],
+        $this->parseNotes($_POST['notes']),
+        $_POST['synopsis'],
+        $this->parseHoraires($_POST['horaires'])
+      );
         $this->cinema->addFilm($film);
         header('Location: index.php?controller=film&action=index');
       } else {
