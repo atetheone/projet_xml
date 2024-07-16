@@ -1,3 +1,5 @@
+<?php include 'views/includes/header.php'; ?>
+
 <h1>Films</h1>
 <a href="index.php?controller=film&action=add">Ajouter un Film</a>
 <table>
@@ -31,3 +33,5 @@
   </tr>
   <?php endforeach; ?>
 </table>
+
+<?php include 'views/includes/footer.php'; ?>
