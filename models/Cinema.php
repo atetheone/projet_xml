@@ -10,12 +10,12 @@ class Cinema {
     $this->xmlRoot = $this->loadFilmsXML();
   }
 
-  private function loadFilmsXML() {
-    if (file_exists($this->xmlFile)) {
-      return simplexml_load_file($this->xmlFile);
-    } else {
-      throw new Exception('Échec lors de l\'ouverture du fichier ' . $this->xmlFile);
+  public function getAllFilms() {
+    $films = [];
+    foreach ($this->xml->film as $film) {
+      $films[] = $this->createFilmFromXML($film);
     }
+    return $films;
   }
 
   public function getFilms() {
