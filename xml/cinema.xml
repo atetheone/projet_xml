@@ -2,7 +2,7 @@
 <!DOCTYPE cinéma SYSTEM "cinema.dtd">
 
 <cinéma>
-    <film>
+    <film id="f1">
         <titre>Tenet</titre>
         <durée heures="2" minutes="30" />
         <genres>
