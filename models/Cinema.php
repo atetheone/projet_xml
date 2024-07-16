@@ -17,13 +17,14 @@ class Cinema {
   }
 
   public function getFilmById($filmId) {
-      foreach ($this->films as $film) {
+      foreach ($this->xmlRoot->film as $film) {
         if ($film['id'] == $filmId) {
           return $film;
         }
       }
       return null;
   }
+
 
   public function addFilm($film) {
     $newFilm = $this->xmlRoot->addChild('film');
