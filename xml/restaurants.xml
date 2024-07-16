@@ -2,7 +2,7 @@
 <!DOCTYPE restaurants SYSTEM "restaurants.dtd">
 
 <restaurants>
-    <restaurant>
+    <restaurant id="r1">
         <coordonnees>
             <nom>Le Gourmet</nom>
             <adresse>123 Rue de Paris, Dakar</adresse>
@@ -38,10 +38,12 @@
             </plat>
         </carte>
         <menus>
-            <menu plats="p1 p2">
+            <menu>
                 <titre>Menu Dégustation</titre>
                 <menuDescription>Un menu complet pour découvrir nos spécialités.</menuDescription>
                 <prix devise="XOF">20000</prix>
+                <element plat="p1" />
+                <element plat="p2" />
             </menu>
         </menus>
     </restaurant>
