@@ -40,6 +40,7 @@ h1 {
 }
 
 table {
+  margin-top: 1rem;
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
@@ -76,56 +77,50 @@ form {
   border-radius: 0.25rem;
 }
 
+textarea {
+  height: 100px; 
+  resize: vertical; 
+}
+
 label {
   display: block;
   margin-bottom: 0.5rem;
 }
 
 input[type="text"], input[type="number"], textarea {
-  width: 100%;
+  width: 95%;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
 
-input[type="submit"] {
-  background-color: #007bff;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-footer {
-  background-color: #343a40;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
-
-/* Nouveaux styles pour les actions */
-.action-buttons {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.action-buttons a {
+input[type="submit"], .action-buttons a, .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
   color: white;
   background-color: #007bff;
+  border: none;
   border-radius: 0.25rem;
   text-decoration: none;
-  transition: background-color 0.3s;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+input[type="submit"]:hover, .action-buttons a:hover, .btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+input[type="submit"]:active, .action-buttons a:active, .btn:active {
+  background-color: #003f7f;
+  transform: scale(0.95);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .action-buttons a.edit {
@@ -136,6 +131,12 @@ footer {
   background-color: #dc3545;
 }
 
-.action-buttons a:hover {
-  opacity: 0.8;
+footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  /* position: fixed; */
+  width: 100%;
+  /* bottom: 0; */
 }
