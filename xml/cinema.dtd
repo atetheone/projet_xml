@@ -1,5 +1,5 @@
-<!ELEMENT cinéma (film+)>
-<!ELEMENT film (titre, durée, genres, réalisateur, langue, acteurs, annee,  notes?, synopsis, horaires)>
+<!ELEMENT cinema (film+)>
+<!ELEMENT film (titre, duree, genres, realisateur, langue, acteurs, annee,  notes?, synopsis, horaires)>
 <!ATTLIST film id ID #REQUIRED>
 <!ELEMENT titre (#PCDATA)>
 <!ELEMENT durée EMPTY>
@@ -7,11 +7,11 @@
                minutes NMTOKEN #REQUIRED>
 <!ELEMENT genres (genre+)>
 <!ELEMENT genre (#PCDATA)>
-<!ELEMENT réalisateur (#PCDATA)>
+<!ELEMENT realisateur (#PCDATA)>
 <!ELEMENT langue (#PCDATA)>
 <!ELEMENT acteurs (acteur+)>
 <!ELEMENT acteur (#PCDATA)>
-<!ELEMENT année (#PCDATA)>
+<!ELEMENT annee (#PCDATA)>
 <!ELEMENT notes (note*)>
 <!ELEMENT note (#PCDATA)>
 <!ATTLIST note source CDATA #REQUIRED>
