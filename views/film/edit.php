@@ -1,3 +1,5 @@
+<?php include 'views/includes/header.php'; ?>
+
 <h1>Modifier le Film</h1>
 <form method="POST" action="index.php?controller=film&action=edit&id=<?php echo $film->id; ?>">
   <label>Titre</label>
@@ -39,3 +41,5 @@
   
   <input type="submit" value="Modifier le Film">
 </form>
+
+<?php include 'views/includes/footer.php'; ?>
