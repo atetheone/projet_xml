@@ -1,8 +1,15 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -33,6 +40,7 @@ nav ul li a {
 
 main {
   padding: 1rem;
+  flex: 1;
 }
 
 h1 {
