@@ -4,7 +4,7 @@ class RestaurantsModel {
   private $xmlRoot;
   private $xmlFile;
 
-  public function __construct(xmlFile) {
+  public function __construct($xmlFile) {
     $this->xmlFile = $xmlFile;
     $this->xmlRoot = $this->loadRestaurantsXML();
   }
@@ -44,7 +44,7 @@ class RestaurantsModel {
   }
 
   public function deleteRestaurant($id) {
-    $dom = dom_import_simplexml($this->xml);
+    $dom = dom_import_simplexml($this->xmlRoot);
     foreach ($dom->getElementsByTagName('restaurant') as $restaurant) {
       if ($restaurant->getAttribute('id') == $id) {
         $restaurant->parentNode->removeChild($restaurant);
