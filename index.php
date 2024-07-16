@@ -8,7 +8,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
 switch ($controller) {
   case 'film':
-    $controller = new FilmController();
+    $controller = new CinemaController();
     break;
   case 'restaurant':
     $controller = new RestaurantController();
