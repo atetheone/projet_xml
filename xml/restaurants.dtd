@@ -1,5 +1,6 @@
 <!ELEMENT restaurants (restaurant+)>
 <!ELEMENT restaurant (coordonnees, carte, menus?)>
+<!ATTLIST restaurant id ID #REQUIRED>
 <!ELEMENT coordonnees (nom, adresse, restaurateur, description)>
 <!ELEMENT nom (#PCDATA)>
 <!ELEMENT adresse (#PCDATA)>
@@ -23,7 +24,8 @@
 <!ELEMENT platDescription (#PCDATA | important)*>
 
 <!ELEMENT menus (menu+)>
-<!ELEMENT menu (titre, menuDescription, prix)>
-<!ATTLIST menu plats IDREFS #REQUIRED>
+<!ELEMENT menu (titre, menuDescription, prix, element*)>
 <!ELEMENT titre (#PCDATA)>
 <!ELEMENT menuDescription (#PCDATA)>
+<!ELEMENT element EMPTY>
+<!ATTLIST element plat IDREF #REQUIRED>
