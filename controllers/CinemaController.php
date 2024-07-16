@@ -67,4 +67,26 @@ class FilmController {
     $this->cinema->deleteFilm($id);
     header('Location: index.php?controller=film&action=index');
   }
+
+  private function parseNotes($notesString) {
+    $notes = [];
+    foreach (explode(';', $notesString) as $note) {
+      list($source, $text) = explode(':', $note);
+      $notes[] = ['source' => trim($source), 'text' => trim($text)];
+    }
+    return $notes;
+  }
+
+  private function parseHoraires($horairesString) {
+    $horaires = [];
+    foreach (explode(';', $horairesString) as $horaire) {
+      list($jour, $heure, $minute) = explode(':', $horaire);
+      $horaires[] = [
+        'jour' => trim($jour),
+        'heure' => trim($heure),
+        'minute' => trim($minute) ?: '00'
+      ];
+    }
+    return $horaires;
+  }
 }
