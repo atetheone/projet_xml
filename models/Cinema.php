@@ -44,7 +44,9 @@ class Cinema {
     foreach ($this->xmlRoot->film as $film) {
       if ($film['id'] == $filmId) {
         $dom = dom_import_simplexml($film);
-        $dom->parentNode->removeChild($dom);
+        foreach ($dom->getElementsByTagName('film') as $film) {
+      if ($film->getAttribute('id') == $id) {
+        $film->parentNode->removeChild($film);
         $this->saveXML();
         return;
       }
