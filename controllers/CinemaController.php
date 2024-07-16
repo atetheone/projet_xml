@@ -6,7 +6,7 @@ class FilmController {
     private $cinema;
 
     public function __construct() {
-      $this->cinema = new Cinema();
+      $this->cinema = new Cinema("xml/cinema.xml");
     }
 
     public function index() {
