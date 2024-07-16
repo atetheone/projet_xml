@@ -2,6 +2,7 @@
 
 class Cinema {
   private $xmlRoot;
+  private $xmlFile;
 
   public function __construct($xmlFile) {
     $this->xmlFile = $xmlFile;
