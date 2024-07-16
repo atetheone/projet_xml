@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE cinéma SYSTEM "cinema.dtd">
+<!DOCTYPE cinema SYSTEM "cinema.dtd">
 
-<cinéma>
+<cinema>
     <film id="f1">
         <titre>Tenet</titre>
-        <durée heures="2" minutes="30" />
+        <duree heures="2" minutes="30" />
         <genres>
             <genre>Action</genre>
             <genre>Thiller</genre>
             <genre>Espionnage</genre>
         </genres>
-        <réalisateur>Christopher Nolan</réalisateur>
+        <realisateur>Christopher Nolan</realisateur>
         <langue>VO</langue>
         <acteurs>
             <acteur>John David Washington</acteur>
             <acteur>Robert Pattinson</acteur>
             <acteur>Elizabeth Debicki</acteur>
         </acteurs>
-        <année>2020</année>
+        <annee>2020</annee>
         <notes>
             <note source="presse">3.6</note>
             <note source="spectateur">4.1</note>
@@ -261,4 +261,4 @@ Doublé par ses commanditaires, et obsédé par les risques qui pèsent sur Iren
             <séance jour="dimanche">20:20</séance>
         </séances>
     </film> -->
-</cinéma>
+</cinema>

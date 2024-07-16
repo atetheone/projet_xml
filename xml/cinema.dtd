@@ -2,8 +2,8 @@
 <!ELEMENT film (titre, duree, genres, realisateur, langue, acteurs, annee,  notes?, synopsis, horaires)>
 <!ATTLIST film id ID #REQUIRED>
 <!ELEMENT titre (#PCDATA)>
-<!ELEMENT durée EMPTY>
-<!ATTLIST durée heures NMTOKEN #REQUIRED
+<!ELEMENT duree EMPTY>
+<!ATTLIST duree heures NMTOKEN #REQUIRED
                minutes NMTOKEN #REQUIRED>
 <!ELEMENT genres (genre+)>
 <!ELEMENT genre (#PCDATA)>
