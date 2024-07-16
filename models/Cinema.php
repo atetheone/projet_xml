@@ -54,42 +54,9 @@ class Cinema {
   }
 
   public function updateFilm($film) {
-    foreach (this->films->film as $filmElement) {
-      if ($filmElement['id'] == $film->id) {
-        $filmElement->titre = $film->titre;
-        $filmElement->durée['heures'] = $film->dureeHeures;
-        $filmElement->durée['minutes'] = $film->dureeMinutes;
-        $filmElement->genres = null;
-        $genres = $filmElement->addChild('genres');
-        foreach ($film->genres as $genre) {
-            $genres->addChild('genre', $genre);
-        }
-        $filmElement->réalisateur = $film->realisateur;
-        $filmElement->langue = $film->langue;
-        $filmElement->acteurs = null;
-        $acteurs = $filmElement->addChild('acteurs');
-        foreach ($film->acteurs as $acteur) {
-            $acteurs->addChild('acteur', $acteur);
-        }
-        $filmElement->année = $film->annee;
-        $filmElement->notes = null;
-        if (!empty($film->notes)) {
-            $notes = $filmElement->addChild('notes');
-            foreach ($film->notes as $note) {
-                $noteElement = $notes->addChild('note', $note['note']);
-                $noteElement->addAttribute('source', $note['source']);
-            }
-        }
-        $filmElement->synopsis = $film->synopsis;
-        $filmElement->horaires = null;
-        $horaires = $filmElement->addChild('horaires');
-        foreach ($film->horaires as $horaire) {
-          $horaireElement = $horaires->addChild('horaire');
-          $horaireElement->addAttribute('jour', $horaire['jour']);
-          $horaireElement->addAttribute('heure', $horaire['heure']);
-          $horaireElement->addAttribute('minute', $horaire['minute']);
-        }
-
+    foreach ($this->xml->film as $filmXML) {
+      if ((string) $filmXML['id'] == $film->id) {
+        $this->fillXMLFromFilm($filmXML, $film);
         $this->saveXML();
         return;
       }
