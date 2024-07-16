@@ -1,7 +1,7 @@
 <?php include 'views/includes/header.php'; ?>
 
 <h1>Films</h1>
-<a href="index.php?controller=film&action=add">Ajouter un Film</a>
+<a href="index.php?controller=film&action=add" class="btn">Ajouter un Film</a>
 <table>
   <tr>
     <th>ID</th>
@@ -26,9 +26,9 @@
     <td><?php echo $film->realisateur; ?></td>
     <td><?php echo $film->langue; ?></td>
     <td><?php echo $film->annee; ?></td>
-    <td>
-      <a href="index.php?controller=film&action=edit&id=<?php echo $film->id; ?>">Modifier</a>
-      <a href="index.php?controller=film&action=delete&id=<?php echo $film->id; ?>">Supprimer</a>
+    <td class="action-buttons">
+      <a href="index.php?controller=film&action=edit&id=<?php echo $film->id; ?>" class="edit"><i class="fas fa-edit"></i> Modifier</a>
+      <a href="index.php?controller=film&action=delete&id=<?php echo $film->id; ?>" class="delete"><i class="fas fa-trash-alt"></i> Supprimer</a>
     </td>
   </tr>
   <?php endforeach; ?>
