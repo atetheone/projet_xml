@@ -1,6 +1,6 @@
 <?php include 'views/includes/header.php'; ?>
 
-<h1>Ajouter un Film</h1>
+<h1 class="title">Ajouter un Film</h1>
 <form class="add-form" method="POST" action="index.php?controller=film&action=add">
   <label>Titre</label>
   <input type="text" name="titre" required>
