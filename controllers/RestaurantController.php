@@ -14,10 +14,16 @@ class RestaurantController {
     include 'views/restaurant/index.php';
   }
 
+  public function show() {
+    $id = $_GET['id'];
+    $restaurant = $this->restaurantsModel->getRestaurantById($id);
+    include 'views/restaurant/show.php';
+  }
+
   public function add() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $restaurant = new Restaurant(
-        'r' . uniqid(),  // Générer un identifiant unique pour chaque nouveau restaurant
+        'r' . uniqid(),
         $_POST['nom'],
         $_POST['adresse'],
         $_POST['restaurateur'],
