@@ -1,4 +1,4 @@
-<!ELEMENT restaurants (restaurant+)>
+<!ELEMENT restaurants (restaurant*)>
 <!ELEMENT restaurant (coordonnees, carte, menus?)>
 <!ATTLIST restaurant id ID #REQUIRED>
 <!ELEMENT coordonnees (nom, adresse, restaurateur, description)>
