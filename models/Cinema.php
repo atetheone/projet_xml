@@ -19,8 +19,8 @@ class Cinema {
 
   public function getFilmById($filmId) {
       foreach ($this->xmlRoot->film as $film) {
-        if ($film['id'] == $filmId) {
-          return $film;
+        if ((string)$film['id'] == $filmId) {
+          return $this->createFilmFromXML($film);
         }
       }
       return null;
