@@ -45,7 +45,7 @@ class Cinema {
   }
 
   public function updateFilm($film) {
-    foreach ($this->xml->film as $filmXML) {
+    foreach ($this->xmlRoot->film as $filmXML) {
       if ((string) $filmXML['id'] == $film->id) {
         $this->fillXMLFromFilm($filmXML, $film);
         $this->saveXML();
