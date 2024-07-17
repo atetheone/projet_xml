@@ -9,13 +9,18 @@
 </head>
 <body>
   <header>
-      <h1>Bienvenue sur le Portail Cinéma</h1>
-      <nav>
-          <ul>
-              <li><a href="index.php">Accueil</a></li>
-              <li><a href="index.php?controller=film&action=index">Films</a></li>
-              <li><a href="index.php?controller=restaurant&action=index">Restaurants</a></li>
-          </ul>
-      </nav>
+    <h1>Bienvenue sur le Portail Cinéma</h1>
+    <nav>
+      <ul>
+        <li><a href="index.php">Accueil</a></li>
+        <li><a href="index.php?controller=film&action=index">Films</a></li>
+        <li><a href="index.php?controller=restaurant&action=index">Restaurants</a></li>
+        <?php if (AuthController::checkLoggedIn()): ?>
+            <li><a href="index.php?controller=auth&action=logout" class="btn">Déconnexion</a></li>
+        <?php else: ?>
+            <li><a href="index.php?controller=auth&action=login"class="btn">Connexion Administrateur</a></li>
+        <?php endif; ?>
+      </ul>
+    </nav>
   </header>
   <main>
