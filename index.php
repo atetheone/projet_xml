@@ -41,6 +41,8 @@ switch ($controller) {
       $cinemaController->edit();
     } elseif ($action === 'delete') {
       $cinemaController->delete();
+    } else if ($action === 'show') {
+      $cinemaController->show();
     } else {
       echo "Action non trouvée";
     }
@@ -56,6 +58,8 @@ switch ($controller) {
       $restaurantController->edit();
     } elseif ($action === 'delete') {
       $restaurantController->delete();
+    } else if ($action === 'show') {
+      $restaurantController->show();
     } else {
       echo "Action non trouvée";
     }
