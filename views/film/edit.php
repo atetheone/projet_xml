@@ -1,6 +1,6 @@
 <?php include 'views/includes/header.php'; ?>
 
-<h1>Modifier le Film</h1>
+<h1 class="title">Modifier le Film</h1>
 <form method="POST" action="index.php?controller=film&action=edit&id=<?= $film->id; ?>">
     <label>Titre</label>
     <input type="text" name="titre" value="<?= $film->titre; ?>" required>
