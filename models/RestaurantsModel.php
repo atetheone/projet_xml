@@ -1,5 +1,14 @@
 <?php
 
+require_once 'Restaurant.php';
+require_once 'Description/DescriptionElement.php';
+require_once 'Description/Image.php';
+require_once 'Description/Item.php';
+require_once 'Description/Important.php';
+require_once 'Description/Liste.php';
+
+
+
 class RestaurantsModel {
   private $xmlRoot;
   private $xmlFile;
@@ -52,6 +61,32 @@ class RestaurantsModel {
         return;
       }
     }
+  }
+
+  private function parseDescription($descriptionXML) {
+    $description = [];
+    foreach ($descriptionXML->children() as $child) {
+      switch ($child->getName()) {
+        case 'paragraphe':
+          $description[] = new Paragraphe((string) $child);
+          break;
+        case 'image':
+          $description[] = new Image((string) $child['url'], (string) $child['position']);
+          break;
+        case 'liste':
+          $items = [];
+          foreach ($child->item as $item) {
+            $items[] = new Item((string) $item);
+          }
+          $description[] = new Liste($items);
+          break;
+        case 'important':
+          $description[] = new Important((string) $child);
+          break;
+      }
+    }
+
+    return $description;
   }
 
   private function createRestaurantFromXML($restaurant) {
@@ -123,11 +158,6 @@ class RestaurantsModel {
     }
   }
 
-  private function parseDescription($descriptionXML) {
-    // Fonction pour parser la description en un format plus utilisable
-    // ...
-    return (string) $descriptionXML;
-  }
 
   private function fillDescriptionXML($descriptionXML, $description) {
     // Fonction pour remplir la description XML à partir d'un format plus utilisable
