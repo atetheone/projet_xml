@@ -15,6 +15,8 @@ class CinemaController {
   }
 
   public function add() {
+    $this->adminVerify();
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $film = new Film(
         'f' . uniqid(),
@@ -38,6 +40,8 @@ class CinemaController {
   }
 
   public function edit() {
+    $this->adminVerify();
+
     $id = $_GET['id'];
     $film = $this->cinema->getFilmById($id);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -63,6 +67,8 @@ class CinemaController {
   }
 
   public function delete() {
+    $this->adminVerify();
+    
     $id = $_GET['id'];
     $this->cinema->deleteFilm($id);
     header('Location: index.php?controller=film&action=index');
@@ -88,5 +94,12 @@ class CinemaController {
       ];
     }
     return $horaires;
+  }
+
+  private function adminVerify() {
+    if (!AuthController::checkAdmin()) {
+      header('Location: index.php?controller=auth&action=login');
+      exit();
+    }
   }
 }
