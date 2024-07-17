@@ -7,7 +7,6 @@
 
 <table>
   <tr>
-    <th>ID</th>
     <th>Titre</th>
     <th>Durée</th>
     <th>Genres</th>
@@ -20,7 +19,6 @@
   </tr>
   <?php foreach ($films as $film): ?>
   <tr>
-    <td><?= $film->id; ?></td>
     <td><?= $film->titre; ?></td>
     <td><?= $film->duree_heures . 'h ' . $film->duree_minutes . 'm'; ?></td>
     <td>
@@ -31,12 +29,13 @@
     <td><?= $film->realisateur; ?></td>
     <td><?= $film->langue; ?></td>
     <td><?= $film->annee; ?></td>
-    <?php if (AuthController::checkAdmin()): ?>
-      <td class="action-buttons">
+    <td class="action-buttons">
+      <a href="index.php?controller=film&action=show&id=<?php echo $film->id; ?>" class="btn">Voir Détails</a>
+      <?php if (AuthController::checkAdmin()): ?>
         <a href="index.php?controller=film&action=edit&id=<?= $film->id; ?>" class="edit"><i class="fas fa-edit"></i> Modifier</a>
         <a href="index.php?controller=film&action=delete&id=<?= $film->id; ?>" class="delete"><i class="fas fa-trash-alt"></i> Supprimer</a>
-      </td>
-    <?php endif; ?>
+      <?php endif; ?>
+    </td>
 
   </tr>
   <?php endforeach; ?>
