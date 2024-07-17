@@ -1,6 +1,6 @@
 <?php include 'views/includes/header.php'; ?>
 
-<h1>Modifier le Restaurant</h1>
+<h1 class="title">Modifier le Restaurant</h1>
 <form method="POST" action="index.php?controller=restaurant&action=edit&id=<?= $restaurant->id; ?>">
     <label>Nom</label>
     <input type="text" name="nom" value="<?= $restaurant->nom; ?>" readonly>
