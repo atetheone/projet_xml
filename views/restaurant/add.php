@@ -1,6 +1,6 @@
 <?php include 'views/includes/header.php'; ?>
 
-<h1>Ajouter un Restaurant</h1>
+<h1 class="title">Ajouter un Restaurant</h1>
 <form method="POST" action="index.php?controller=restaurant&action=add">
     <label>Nom</label>
     <input type="text" name="nom" required>
