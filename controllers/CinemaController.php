@@ -14,6 +14,12 @@ class CinemaController {
     include 'views/film/index.php';
   }
 
+  public function show() {
+    $id = $_GET['id'];
+    $film = $this->cinema->getFilmById($id);
+    include 'views/film/show.php';
+  }
+
   public function add() {
     $this->adminVerify();
 
@@ -68,7 +74,7 @@ class CinemaController {
 
   public function delete() {
     $this->adminVerify();
-    
+
     $id = $_GET['id'];
     $this->cinema->deleteFilm($id);
     header('Location: index.php?controller=film&action=index');
