@@ -143,6 +143,6 @@ class RestaurantsModel {
   }
 
   private function saveXML() {
-    $this->xml->asXML($this->xmlFile);
+    $this->xmlRoot->asXML($this->xmlFile);
   }
 }
