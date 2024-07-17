@@ -1,73 +1,68 @@
-# Portail Web de Films et Restaurants
+# Portail Cinéma
 
-## Description
-
-Ce projet est un portail web permettant de gérer et d'afficher des informations sur des films et des restaurants. Les données sont stockées dans des fichiers XML et sont conformes aux DTD spécifiées. Le portail permet à un administrateur de gérer les ressources (ajouter, modifier, supprimer des films et des fiches de restaurants) et à un visiteur de visualiser ces données.
+Bienvenue sur le projet Portail Cinéma ! Ce projet est un portail web permettant de gérer et de visualiser des films et des restaurants. Il inclut des fonctionnalités de gestion pour les administrateurs et des options de visualisation pour les visiteurs.
 
 ## Fonctionnalités
 
-- **Gestion des films :**
-  - Ajout de films
-  - Modification de films
-  - Suppression de films
-  - Affichage des films
+### Pour les visiteurs
 
-- **Gestion des restaurants :**
-  - Ajout de restaurants
-  - Modification de restaurants
-  - Suppression de restaurants
-  - Affichage des restaurants
+- **Voir les films** : Les visiteurs peuvent consulter la liste des films disponibles, y compris les détails tels que le titre, la durée, les genres, le réalisateur, la langue, les acteurs, l'année, le synopsis et les horaires.
+- **Voir les restaurants** : Les visiteurs peuvent consulter la liste des restaurants, y compris les détails tels que le nom, l'adresse, le restaurateur et la description.
+
+### Pour les administrateurs
+
+- **Gérer les films** : Ajouter, modifier et supprimer des films. Les administrateurs peuvent également voir les détails complets de chaque film.
+- **Gérer les restaurants** : Ajouter, modifier et supprimer des restaurants. Les administrateurs peuvent également voir les détails complets de chaque restaurant.
+
+## Technologies Utilisées
+
+- **PHP** : Utilisé pour le développement côté serveur.
+- **SimpleXML** : Utilisé pour la gestion des fichiers XML.
+- **HTML/CSS** : Utilisé pour la structure et le style des pages web.
+<!-- - **JavaScript** : Peut être utilisé pour des interactions dynamiques (non couvert dans ce projet). -->
+- **Font Awesome** : Utilisé pour les icônes dans l'interface utilisateur.
+
+## Structure du Projet
+
+- **index.php** : Point d'entrée principal du projet, gère le routage des requêtes vers les contrôleurs appropriés.
+- **controllers/** : Contient les contrôleurs pour la gestion des films, des restaurants et de l'authentification.
+- **models/** : Contient les modèles pour les films et les restaurants.
+- **views/** : Contient les vues pour afficher les pages web.
+- **views/includes/** : Contient les fichiers d'en-tête et de pied de page communs.
+- **views/film/** : Contient les vues spécifiques pour la gestion et la visualisation des films.
+- **views/restaurant/** : Contient les vues spécifiques pour la gestion et la visualisation des restaurants.
+- **public/css/** : Contient les fichiers CSS pour le style de l'application.
+- **config/** : Contient les fichiers de configuration pour les utilisateurs et d'autres paramètres.
 
 ## Prérequis
 
-- Serveur web (Apache, Nginx, etc.)
-- PHP 5.3 ou supérieur
-- Extensions PHP : SimpleXML
+- **PHP** : Assurez-vous que PHP est installé sur votre machine.
+- **Serveur Web** : Utilisez Apache, Nginx ou tout autre serveur web de votre choix.
 
 ## Installation
 
-1. Clonez le dépôt ou téléchargez les fichiers du projet.
-
-```bash
-git clone https://github.com/atetheone/projet_xml.git
-```
-
-2. Placez les fichiers du projet dans le répertoire racine de votre serveur web
-
-3. Assurez-vous que le serveur web a les permissions de lecture et d'écriture sur les fichiers XML (`cinema.xml` et `restaurants.xml`).
-
-## Structure des fichiers
-
-- `index.php` : Page principale pour afficher les films et les restaurants.
-- `ajout_film.php` : Script pour ajouter un film.
-- `ajout_restaurant.php` : Script pour ajouter un restaurant.
-- `cinema.xml` : Fichier XML contenant les données des films.
-- `restaurants.xml` : Fichier XML contenant les données des restaurants.
-- `restaurants.dtd` : DTD pour valider les fichiers XML des restaurants.
-- `cinema.dtd` : DTD pour valider les fichiers XML des films.
-- `README.md` : Ce fichier de documentation.
+1. Clonez le dépôt sur votre machine locale :
+   ```sh
+   git clone https://github.com/atetheone/projet_xml.git
+   ```
+2. Accédez au répertoire du projet :
+   ```sh
+   cd projet_xml
+   ```
+3. Configurez votre serveur web pour servir le projet. Par exemple, pour Apache, configurez un hôte virtuel pointant vers le répertoire du projet.
 
 ## Utilisation
 
-### Affichage des films et des restaurants
+1. Démarrez votre serveur web.
+2. Ouvrez un navigateur et accédez à l'URL configurée pour votre projet (par exemple, http://localhost/projet_xml).
+3. Utilisez les options de navigation pour voir les films et les restaurants.
+4. Pour accéder aux fonctionnalités d'administration, connectez-vous avec les informations d'identification administrateur.
 
-Ouvrez `index.php` dans votre navigateur. Cette page affiche les films et les restaurants en lisant les données à partir des fichiers XML.
+## Informations de Connexion Administrateur
 
-### Ajout de films
+- **Nom d'utilisateur** : admin
+- **Mot de passe** : adminpass
 
-1. Ouvrez `ajout_film.php` dans votre navigateur.
-2. Remplissez le formulaire d'ajout de film et soumettez-le.
-3. Le film sera ajouté au fichier `films.xml` et apparaîtra sur la page principale.
-
-### Ajout de restaurants
-
-1. Ouvrez `ajout_restaurant.php` dans votre navigateur.
-2. Remplissez le formulaire d'ajout de restaurant et soumettez-le.
-3. Le restaurant sera ajouté au fichier `restaurants.xml` et apparaîtra sur la page principale.
-
-### Modification et suppression
-
-Pour le moment, les fonctionnalités de modification et de suppression doivent être implémentées de manière similaire aux fonctionnalités d'ajout. Vous pouvez créer des formulaires et des scripts PHP correspondants pour gérer ces opérations.
 
 ## Contributeurs
 
