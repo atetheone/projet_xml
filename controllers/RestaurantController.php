@@ -17,7 +17,7 @@ class RestaurantController {
   public function add() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $restaurant = new Restaurant(
-        uniqid(),  // Générer un identifiant unique pour chaque nouveau restaurant
+        'r' . uniqid(),  // Générer un identifiant unique pour chaque nouveau restaurant
         $_POST['nom'],
         $_POST['adresse'],
         $_POST['restaurateur'],
