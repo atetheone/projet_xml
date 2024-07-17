@@ -3,60 +3,58 @@
 <cinema>
     <film id="f1">
         <titre>Tenet</titre>
-        <duree heures="2" minutes="30" />
+        <duree heures="1" minutes="30"/>
         <genres>
             <genre>Action</genre>
-            <genre>Thiller</genre>
-            <genre>Espionnage</genre>
+            <genre> Thiller</genre>
+            <genre> Espionnage</genre>
         </genres>
         <realisateur>Christopher Nolan</realisateur>
         <langue>VO</langue>
         <acteurs>
             <acteur>John David Washington</acteur>
-            <acteur>Robert Pattinson</acteur>
-            <acteur>Elizabeth Debicki</acteur>
+            <acteur> Robert Pattinson</acteur>
+            <acteur> Elizabeth Debicki</acteur>
         </acteurs>
         <annee>2020</annee>
         <notes>
             <note source="presse">3.6</note>
             <note source="spectateur">4.1</note>
         </notes>
-        <synopsis>
-            Muni d'un seul mot – Tenet – et décidé à se battre pour sauver le monde, notre protagoniste sillonne l'univers crépusculaire de l'espionnage international.
-            Sa mission le projettera dans une dimension qui dépasse le temps.
-            Pourtant, il ne s'agit pas d'un voyage dans le temps, mais d'un renversement temporel...
+        <synopsis>            Muni d'un seul mot – Tenet – et décidé à se battre pour sauver le monde, notre protagoniste sillonne l'univers crépusculaire de l'espionnage international.&#13;
+            Sa mission le projettera dans une dimension qui dépasse le temps.&#13;
+            Pourtant, il ne s'agit pas d'un voyage dans le temps, mais d'un renversement temporel...&#13;
         </synopsis>
         <horaires>
-            <!-- <horaire>Mer, Sam : 14:00 | 16:40 | 19:40 | 22:10</horaire> -->
-            <horaire jour="lundi" heure="14" />
-            <horaire jour="lundi" heure="19" minute="40" />
-            <horaire jour="lundi" heure="22" minute="10" />
-            <horaire jour="mardi" heure="14" />
-            <horaire jour="mardi" heure="19" minute="40" />
-            <horaire jour="mardi" heure="22" minute="10" />
-            <horaire jour="mercredi" heure="14" />
-            <horaire jour="mercredi" heure="16" minute="40" />
-            <horaire jour="mercredi" heure="19" minute="40" />
-            <horaire jour="mercredi" heure="22" minute="10" />
-            <horaire jour="jeudi" heure="14" />
-            <horaire jour="jeudi" heure="19" minute="40" />
-            <horaire jour="jeudi" heure="22" minute="10" />
-            <horaire jour="vendredi" heure="14" />
-            <horaire jour="vendredi" heure="19" minute="40" />
-            <horaire jour="vendredi" heure="22" minute="10" />
-            <horaire jour="samedi" heure="14" />
-            <horaire jour="samedi" heure="16" minute="40" />
-            <horaire jour="samedi" heure="19" minute="40" />
-            <horaire jour="samedi" heure="22" minute="10" />
-            <horaire jour="dimanche" heure="10" minute="20" />
-            <horaire jour="dimanche" heure="14" />
-            <horaire jour="dimanche" heure="16" minute="40" />
-            <horaire jour="dimanche" heure="20" minute="20" />
+            <horaire jour="lundi" heure="14" minute="00"/>
+            <horaire jour="lundi" heure="19" minute="40"/>
+            <horaire jour="lundi" heure="22" minute="10"/>
+            <horaire jour="mardi" heure="14" minute="00"/>
+            <horaire jour="mardi" heure="19" minute="40"/>
+            <horaire jour="mardi" heure="22" minute="10"/>
+            <horaire jour="mercredi" heure="14" minute="00"/>
+            <horaire jour="mercredi" heure="16" minute="40"/>
+            <horaire jour="mercredi" heure="19" minute="40"/>
+            <horaire jour="mercredi" heure="22" minute="10"/>
+            <horaire jour="jeudi" heure="14" minute="00"/>
+            <horaire jour="jeudi" heure="19" minute="40"/>
+            <horaire jour="jeudi" heure="22" minute="10"/>
+            <horaire jour="vendredi" heure="14" minute="00"/>
+            <horaire jour="vendredi" heure="19" minute="40"/>
+            <horaire jour="vendredi" heure="22" minute="10"/>
+            <horaire jour="samedi" heure="14" minute="00"/>
+            <horaire jour="samedi" heure="16" minute="40"/>
+            <horaire jour="samedi" heure="19" minute="40"/>
+            <horaire jour="samedi" heure="22" minute="10"/>
+            <horaire jour="dimanche" heure="10" minute="20"/>
+            <horaire jour="dimanche" heure="14" minute="00"/>
+            <horaire jour="dimanche" heure="16" minute="40"/>
+            <horaire jour="dimanche" heure="20" minute="20"/>
         </horaires>
     </film>
     <film id="c6696ec6b68465">
         <titre>Alice in the borderland</titre>
-        <duree heures="2" minutes="00" />
+        <duree heures="2" minutes="00"/>
         <genres>
             <genre>Action</genre>
             <genre>Drame</genre>
@@ -69,11 +67,23 @@
         </acteurs>
         <annee>2015</annee>
         <notes>
-            <note source="" />
+            <note source=""/>
         </notes>
         <synopsis>Film très dangereux</synopsis>
         <horaires>
-            <horaire jour="lundi" heure="20" minute="00" />
+            <horaire jour="lundi" heure="20" minute="00"/>
         </horaires>
+    </film>
+    <film id="f66984447ed5cd">
+        <titre>Naruto</titre>
+        <duree heures="1" minutes="25"/>
+        <genres><genre>Action</genre></genres>
+        <realisateur>Até,Imane</realisateur>
+        <langue>Français</langue>
+        <acteurs><acteur>Cathy</acteur><acteur> Mamya</acteur></acteurs>
+        <annee>2010</annee>
+        <notes><note source=""/></notes>
+        <synopsis>RAS</synopsis>
+        <horaires><horaire jour="lundi" heure="19" minute="00"/><horaire jour="mardi" heure="20" minute="00"/></horaires>
     </film>
 </cinema>
