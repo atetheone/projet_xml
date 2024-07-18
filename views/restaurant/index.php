@@ -16,15 +16,15 @@
     </tr>
     <?php foreach ($restaurants as $restaurant): ?>
     <tr>
-        <td><?php echo $restaurant->nom; ?></td>
-        <td><?php echo $restaurant->adresse; ?></td>
-        <td><?php echo $restaurant->restaurateur; ?></td>
+        <td><?php echo $restaurant->coordonnees->nom; ?></td>
+        <td><?php echo $restaurant->coordonnees->adresse; ?></td>
+        <td><?php echo $restaurant->coordonnees->restaurateur; ?></td>
 
         <td class="action-buttons">
           <a href="index.php?controller=restaurant&action=show&id=<?php echo $restaurant->id; ?>" class="btn">Voir Détails</a>
           <?php if (AuthController::checkAdmin()): ?>
               <a href="index.php?controller=restaurant&action=edit&id=<?php echo $restaurant->id; ?>" class="edit"><i class="fas fa-edit"></i> Modifier</a>
-              <a href="index.php?controller=restaurant&action=delete&id=<?php echo $restaurant->id; ?>" class="delete"><i class="fas fa-trash-alt"></i> Supprimer</a>
+              <a href="index.php?controller=restaurant&action=delete&id=<?php echo $restaurant->id; ?>" class="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce restaurant ?');"><i class="fas fa-trash-alt"></i> Supprimer</a>
           <?php endif; ?>
         </td>   
     </tr>
