@@ -7,19 +7,20 @@
             <adresse>123 Rue de Paris, Dakar</adresse>
             <restaurateur>Jean Dupont</restaurateur>
             <description>
-                <paragraphes>Un restaurant offrant une cuisine française exquise.</paragraphes>
-                <paragraphes>
-                    <image url="https://example.com/image1.jpg" position="gauche" />
-                </paragraphes>
-                <paragraphes>
+                <paragraphe>Un restaurant offrant une cuisine française exquise.</paragraphe>
+                <paragraphe>
+                    Contient une image :
+                    <image url="public/img/img-restau1.jpeg" position="gauche" />
+                </paragraphe>
+                <paragraphe>
                     <liste>
                         <item>Ambiance chaleureuse</item>
                         <item>Service rapide</item>
                     </liste>
-                </paragraphes>
-                <paragraphes>
+                </paragraphe>
+                <paragraphe>
                     <important>Ne manquez pas nos desserts maison !</important>
-                </paragraphes>
+                </paragraphe>
             </description>
         </coordonnees>
         <carte>
