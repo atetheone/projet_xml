@@ -33,7 +33,7 @@
       <a href="index.php?controller=film&action=show&id=<?php echo $film->id; ?>" class="btn">Voir Détails</a>
       <?php if (AuthController::checkAdmin()): ?>
         <a href="index.php?controller=film&action=edit&id=<?= $film->id; ?>" class="edit"><i class="fas fa-edit"></i> Modifier</a>
-        <a href="index.php?controller=film&action=delete&id=<?= $film->id; ?>" class="delete"><i class="fas fa-trash-alt"></i> Supprimer</a>
+        <a href="index.php?controller=film&action=delete&id=<?= $film->id; ?>" class="delete"  onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?');"><i class="fas fa-trash-alt"></i> Supprimer</a>
       <?php endif; ?>
     </td>
 
