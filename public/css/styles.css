@@ -1,6 +1,8 @@
 html, body {
   height: 100%;
   margin: 0;
+  overflow-x: hidden !important;
+  box-sizing: border-box;
 }
 
 body {
@@ -165,4 +167,36 @@ footer {
 
 .title {
   text-align: center;
+}
+
+/* Ajouter des styles spécifiques pour les nouvelles classes et les descriptions */
+.image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image.float-right {
+  float: right;
+  margin-left: 10px;
+}
+
+.image.float-left {
+  float: left;
+  margin-right: 10px;
+}
+
+.image.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.important {
+  font-weight: bold;
+}
+
+.liste {
+  list-style-type: disc;
+  margin-left: 20px;
 }
