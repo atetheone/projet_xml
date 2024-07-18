@@ -18,6 +18,6 @@
 <!ELEMENT synopsis (#PCDATA)>
 <!ELEMENT horaires (horaire+)>
 <!ELEMENT horaire EMPTY>
-<!ATTLIST horaire jour NMTOKEN #REQUIRED
+<!ATTLIST horaire jour (lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche) #REQUIRED
                   heure NMTOKEN #REQUIRED
                   minute NMTOKEN "00">
