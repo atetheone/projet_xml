@@ -6,8 +6,8 @@
 <!ELEMENT adresse (#PCDATA)>
 <!ELEMENT restaurateur (#PCDATA)>
 
-<!ELEMENT description (paragraphes+)>
-<!ELEMENT paragraphes (#PCDATA | image | liste | important)*>
+<!ELEMENT description (paragraphe+)>
+<!ELEMENT paragraphe (#PCDATA | image | liste | important)*>
 <!ELEMENT image EMPTY>
 <!ATTLIST image url CDATA #REQUIRED
                   position (droite | gauche | centre) #IMPLIED>
