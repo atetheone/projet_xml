@@ -1,14 +1,5 @@
 <?php
 
-require_once 'Restaurant.php';
-require_once 'Description/DescriptionElement.php';
-require_once 'Description/Image.php';
-require_once 'Description/Item.php';
-require_once 'Description/Important.php';
-require_once 'Description/Liste.php';
-
-
-
 class RestaurantsModel {
   private $xmlRoot;
   private $xmlFile;
@@ -35,7 +26,8 @@ class RestaurantsModel {
     return null;
   }
 
-  public function addRestaurant($restaurant) {
+
+  public function addRestaurant(Restaurant $restaurant) {
     $newRestaurant = $this->xmlRoot->addChild('restaurant');
     $newRestaurant->addAttribute('id', $restaurant->id);
     $this->fillXMLFromRestaurant($newRestaurant, $restaurant);
@@ -63,106 +55,124 @@ class RestaurantsModel {
     }
   }
 
-  private function parseDescription($descriptionXML) {
-    $description = [];
-    foreach ($descriptionXML->children() as $child) {
-      switch ($child->getName()) {
-        case 'paragraphe':
-          $description[] = new Paragraphe((string) $child);
-          break;
-        case 'image':
-          $description[] = new Image((string) $child['url'], (string) $child['position']);
-          break;
-        case 'liste':
+  private function parseDescription($xmlDescription) {
+    $description = new Description();
+    foreach ($xmlDescription->children() as $child) {
+      if ($child->getName() == 'image') {
+          $description->addParagraphe(new Image((string)$child['url'], (string)$child['position']));
+      } elseif ($child->getName() == 'liste') {
           $items = [];
           foreach ($child->item as $item) {
-            $items[] = new Item((string) $item);
+              $items[] = (string)$item;
           }
-          $description[] = new Liste($items);
-          break;
-        case 'important':
-          $description[] = new Important((string) $child);
-          break;
+          $description->addParagraphe(new Liste($items));
+      } elseif ($child->getName() == 'important') {
+          $description->addParagraphe(new Important((string)$child));
+      } else {
+          $description->addParagraphe((string)$child);
       }
     }
-
     return $description;
   }
 
-  private function createRestaurantFromXML($restaurant) {
-    $id = (string) $restaurant['id'];
-    $coordonnees = $restaurant->coordonnees;
-    $nom = (string) $coordonnees->nom;
-    $adresse = (string) $coordonnees->adresse;
-    $restaurateur = (string) $coordonnees->restaurateur;
-    $description = $this->parseDescription($coordonnees->description);
 
-    $carte = [];
-    foreach ($restaurant->carte->plat as $plat) {
-      $carte[] = [
-        'id' => (string) $plat['id'],
-        'nom' => (string) $plat->nom,
-        'type' => (string) $plat->type,
-        'prix' => (string) $plat->prix,
-        'description' => (string) $plat->platDescription
-      ];
+  private function createRestaurantFromXML($xmlRestaurant) {
+    $coordonnees = new Coordonnees(
+      (string)$xmlRestaurant->coordonnees->nom,
+      (string)$xmlRestaurant->coordonnees->adresse,
+      (string)$xmlRestaurant->coordonnees->restaurateur,
+      $this->parseDescription($xmlRestaurant->coordonnees->description)
+    );
+
+    $carte = new Carte();
+    foreach ($xmlRestaurant->carte->plat as $xmlPlat) {
+      $carte->addPlat(new Plat(
+        (string)$xmlPlat['id'],
+        (string)$xmlPlat->nom,
+        (string)$xmlPlat->type,
+        (string)$xmlPlat->prix,
+        (string)$xmlPlat->prix['devise'],
+        (string)$xmlPlat->platDescription
+      ));
     }
 
     $menus = [];
-    if ($restaurant->menus) {
-      foreach ($restaurant->menus->menu as $menu) {
-        $menuItems = [];
-        foreach ($menu->element as $element) {
-          $menuItems[] = (string) $element['plat'];
+    if (isset($xmlRestaurant->menus)) {
+      foreach ($xmlRestaurant->menus->menu as $xmlMenu) {
+        $elements = [];
+        foreach ($xmlMenu->element as $element) {
+          $elements[] = (string)$element['plat'];
         }
-        $menus[] = [
-          'titre' => (string) $menu->titre,
-          'description' => (string) $menu->menuDescription,
-          'prix' => (string) $menu->prix,
-          'items' => $menuItems
-        ];
+        $menus[] = new Menu(
+          (string)$xmlMenu->titre,
+          (string)$xmlMenu->menuDescription,
+          (string)$xmlMenu->prix,
+          (string)$xmlMenu->prix['devise'],
+          $elements
+        );
       }
     }
 
-    return new Restaurant($id, $nom, $adresse, $restaurateur, $description, $carte, $menus);
+    return new Restaurant((string)$xmlRestaurant['id'], $coordonnees, $carte, $menus);
   }
+
 
   private function fillXMLFromRestaurant($restaurantXML, $restaurant) {
-    $coordonnees = $restaurantXML->addChild('coordonnees');
-    $coordonnees->addChild('nom', $restaurant->nom);
-    $coordonnees->addChild('adresse', $restaurant->adresse);
-    $coordonnees->addChild('restaurateur', $restaurant->restaurateur);
-    $this->fillDescriptionXML($coordonnees->addChild('description'), $restaurant->description);
+    $xmlCoordonnees = $restaurantXML->addChild('coordonnees');
+    $xmlCoordonnees->addChild('nom', $restaurant->coordonnees->nom);
+    $xmlCoordonnees->addChild('adresse', $restaurant->coordonnees->adresse);
+    $xmlCoordonnees->addChild('restaurateur', $restaurant->coordonnees->restaurateur);
+    $xmlCoordonnees->addChild('description', $this->serializeDescription($restaurant->coordonnees->description));
 
-    $carteXML = $restaurantXML->addChild('carte');
-    foreach ($restaurant->carte as $plat) {
-      $platXML = $carteXML->addChild('plat');
-      $platXML->addAttribute('id', $plat['id']);
-      $platXML->addChild('nom', $plat['nom']);
-      $platXML->addChild('type', $plat['type']);
-      $platXML->addChild('prix', $plat['prix'])->addAttribute('devise', 'EUR');
-      $platXML->addChild('platDescription', $plat['description']);
+    $xmlCarte = $restaurantXML->addChild('carte');
+    foreach ($restaurant->carte->plats as $plat) {
+        $xmlPlat = $xmlCarte->addChild('plat');
+        $xmlPlat->addAttribute('id', $plat->id);
+        $xmlPlat->addChild('nom', $plat->nom);
+        $xmlPlat->addChild('type', $plat->type);
+        $xmlPrix = $xmlPlat->addChild('prix', $plat->prix);
+        $xmlPrix->addAttribute('devise', $plat->prix);
+        $xmlPlat->addChild('platDescription', $plat->description);
     }
 
-    if ($restaurant->menus) {
-      $menusXML = $restaurantXML->addChild('menus');
+    if (!empty($restaurant->menus)) {
+      $xmlMenus = $restaurantXML->addChild('menus');
       foreach ($restaurant->menus as $menu) {
-        $menuXML = $menusXML->addChild('menu');
-        $menuXML->addChild('titre', $menu['titre']);
-        $menuXML->addChild('menuDescription', $menu['description']);
-        $menuXML->addChild('prix', $menu['prix']);
-        foreach ($menu['items'] as $item) {
-          $menuXML->addChild('element')->addAttribute('plat', $item);
+        $xmlMenu = $xmlMenus->addChild('menu');
+        $xmlMenu->addChild('titre', $menu->titre);
+        $xmlMenu->addChild('menuDescription', $menu->description);
+        $xmlPrix = $xmlMenu->addChild('prix', $menu->prix);
+        $xmlPrix->addAttribute('devise', $menu->devise);
+        foreach ($menu->elements as $element) {
+          $xmlElement = $xmlMenu->addChild('element');
+          $xmlElement->addAttribute('plat', $element);
         }
       }
     }
+
   }
 
 
-  private function fillDescriptionXML($descriptionXML, $description) {
-    // Fonction pour remplir la description XML à partir d'un format plus utilisable
-    // ...
-  }
+  /*private function fillDescriptionXML($descriptionXML, $description) {
+    foreach ($description as $element) {
+      if ($element instanceof Paragraphe) {
+        $descriptionXML->addChild('paragraphe', $element->content);
+      } elseif ($element instanceof Image) {
+        $image = $descriptionXML->addChild('image');
+        $image->addAttribute('url', $element->url);
+        if ($element->position) {
+          $image->addAttribute('position', $element->position);
+        }
+      } elseif ($element instanceof Liste) {
+        $liste = $descriptionXML->addChild('liste');
+        foreach ($element->items as $item) {
+          $liste->addChild('item', $item->content);
+        }
+      } elseif ($element instanceof Important) {
+        $descriptionXML->addChild('important', $element->content);
+      }
+    }
+  }*/
 
   private function loadRestaurantsXML() {
     if (file_exists($this->xmlFile)) {
@@ -175,4 +185,58 @@ class RestaurantsModel {
   private function saveXML() {
     $this->xmlRoot->asXML($this->xmlFile);
   }
+
+  private function parseCarte($carteXML) {
+    $carte = [];
+    foreach ($carteXML->plat as $plat) {
+        $carte[] = [
+            'id' => (string) $plat['id'],
+            'nom' => (string) $plat->nom,
+            'type' => (string) $plat->type,
+            'prix' => (string) $plat->prix,
+            'description' => (string) $plat->platDescription
+        ];
+    }
+    return $carte;
+  }
+
+  private function parseMenus($menusXML) {
+    $menus = [];
+    if ($menusXML) {
+      foreach ($menusXML->menu as $menu) {
+        $menuItems = [];
+        foreach ($menu->element as $element) {
+          $menuItems[] = (string) $element['plat'];
+        }
+        $menus[] = [
+          'titre' => (string) $menu->titre,
+          'description' => (string) $menu->menuDescription,
+          'prix' => (string) $menu->prix,
+          'items' => $menuItems
+        ];
+      }
+    }
+    return $menus;
+  }
+
+  private function serializeDescription($description) {
+    $xml = '';
+    foreach ($description->paragraphes as $paragraphe) {
+      if ($paragraphe instanceof Image) {
+        $xml .= '<image url="' . $paragraphe->url . '" position="' . $paragraphe->position . '"/>';
+      } elseif ($paragraphe instanceof Liste) {
+        $xml .= '<liste>';
+        foreach ($paragraphe->items as $item) {
+          $xml .= '<item>' . $item . '</item>';
+        }
+        $xml .= '</liste>';
+      } elseif ($paragraphe instanceof Important) {
+        $xml .= '<important>' . $paragraphe->texte . '</important>';
+      } else {
+        $xml .= '<paragraphes>' . $paragraphe . '</paragraphes>';
+      }
+    }
+    return $xml;
+  }
+
 }
