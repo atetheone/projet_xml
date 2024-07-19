@@ -3,32 +3,32 @@
 <h1 class="title">Modifier le Restaurant</h1>
 <form method="POST" action="index.php?controller=restaurant&action=edit&id=<?= $restaurant->id; ?>">
     <label>Nom</label>
-    <input type="text" name="nom" value="<?= $restaurant->nom; ?>" readonly>
+    <input type="text" name="nom" value="<?= $restaurant->coordonnees->nom; ?>" readonly>
     
     <label>Adresse</label>
-    <input type="text" name="adresse" value="<?= $restaurant->adresse; ?>" required>
+    <input type="text" name="adresse" value="<?= $restaurant->coordonnees->adresse; ?>" required>
     
     <label>Restaurateur</label>
-    <input type="text" name="restaurateur" value="<?= $restaurant->restaurateur; ?>" required>
+    <input type="text" name="restaurateur" value="<?= $restaurant->coordonnees->restaurateur; ?>" required>
     
-    <label>Description</label>
-    <textarea name="description" required>
-      <?= $restaurant->description; ?>
-    </textarea>
-    
-    <label>Carte (Format: id, nom, type, prix, description; Séparez les plats par des points-virgules)</label>
+    <label>Description:</label>
+    <textarea name="description" required><?php echo $this->descriptionToString($restaurant->coordonnees->description); ?></textarea>
+
+    <label>Carte:</label>
     <textarea name="carte" required>
       <?= implode('; ', array_map(function($plat) {
         return implode(', ', $plat);
       }, $restaurant->carte)); ?>
     </textarea>
+    <textarea name="carte" required><?php echo $restaurant->carte; ?></textarea>
+    <label>Devise:</label>
+    <input type="text" name="devise" value="<?php echo $restaurant->carte->devise; ?>" required>
+
+    <label>Menus:</label>
+    <textarea name="menus"><?php echo $restaurant->menus; ?></textarea>
+
     
-    <label>Menus (Format: titre, description, prix, items séparés par |; Séparez les menus par des points-virgules)</label>
-    <textarea name="menus">
-      <?= implode('; ', array_map(function($menu) {
-        return $menu['titre'] . ', ' . $menu['description'] . ', ' . $menu['prix'] . ', ' . implode('|', $menu['items']);
-      }, $restaurant->menus)); ?>
-    </textarea>
+    
     
     <input type="submit" value="Modifier le Restaurant">
 </form>
