@@ -4,13 +4,16 @@
     <restaurant id="r1">
         <coordonnees>
             <nom>Le Gourmet</nom>
-            <adresse>123 Rue de Paris, Dakar</adresse>
+            <adresse>123 Rue de Fass, Dakar</adresse>
             <restaurateur>Jean Dupont</restaurateur>
+
             <description>
-                <paragraphe>Un restaurant offrant une cuisine française exquise.</paragraphe>
                 <paragraphe>
-                    Contient une image :
-                    <image url="public/img/img-restau1.jpeg" position="gauche" />
+                    <texte>Un restaurant offrant une cuisine française exquise.</texte>
+                </paragraphe>
+                <paragraphe>
+                    <texte>Contient une image : </texte>
+                    <image url="public/img/img-restau1.jpeg" position="droite" />
                 </paragraphe>
                 <paragraphe>
                     <liste>
@@ -24,33 +27,113 @@
             </description>
         </coordonnees>
         <carte>
-            <plat id="p1">
+
+
+            <plat id="p669af0a047444">
                 <nom>Salade de chèvre chaud</nom>
                 <type>Entrée</type>
                 <prix devise="FCFA">5000</prix>
                 <platDescription>Une délicieuse salade avec du fromage de chèvre chaud.</platDescription>
             </plat>
-            <plat id="p2">
+            <plat id="p669af0a04744b">
                 <nom>Boeuf bourguignon</nom>
                 <type>Plat</type>
                 <prix devise="FCFA">12000</prix>
                 <platDescription>Un classique de la cuisine française.</platDescription>
             </plat>
-            <plat id="p3">
+            <plat id="p669af0a047461">
                 <nom>Tarte Tatin</nom>
                 <type>Dessert</type>
                 <prix devise="FCFA">4000</prix>
-                <platDescription>Une tarte aux pommes renversée caramélisée.
-                </platDescription>
+                <platDescription>Une tarte aux pommes renversée caramélisée. </platDescription>
             </plat>
         </carte>
         <menus>
+
+
             <menu>
                 <titre>Menu Dégustation</titre>
                 <menuDescription>Un menu complet pour découvrir nos spécialités.</menuDescription>
                 <prix devise="FCFA">20000</prix>
-                <element plat="p1" />
-                <element plat="p2" />
+            </menu>
+        </menus>
+    </restaurant>
+    <restaurant id="r669a96b59c441">
+        <coordonnees>
+            <nom>Nouveau Monde</nom>
+            <adresse>Fass, Dakar</adresse>
+            <restaurateur>Até</restaurateur>
+            <description>
+                <paragraphe>
+                    <texte>Un restaurant offrant une cuisine fusion.</texte>
+                </paragraphe>
+            </description>
+        </coordonnees>
+        <carte>
+            <plat id="p669a96b59c435">
+                <nom>Tchieb</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">2000</prix>
+                <platDescription>RADD</platDescription>
+            </plat>
+        </carte>
+        <menus>
+            <menu>
+                <titre>Tché</titre>
+                <menuDescription>RAD</menuDescription>
+                <prix devise="Array">2000</prix>
+            </menu>
+        </menus>
+    </restaurant>
+    <restaurant id="r669aa617b21b2">
+        <coordonnees>
+            <nom>Restaurant isekai</nom>
+            <adresse>14 Place du 11 novembre 1918</adresse>
+            <restaurateur>Cathy</restaurateur>
+            <description>
+                <paragraphe>
+                    <texte>Un restaurant offrant une cuisine japonaise authentique.</texte>
+                </paragraphe>
+            </description>
+        </coordonnees>
+        <carte>
+            <plat id="p669aa617b2066">
+                <nom>Ramen ichiraku</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">10000</prix>
+                <platDescription>Les meilleures nouilles</platDescription>
+            </plat>
+        </carte>
+        <menus>
+            <menu>
+                <titre>Ramen complet</titre>
+                <menuDescription>Le meilleur pour les otakus</menuDescription>
+                <prix devise="FCFA">15000</prix>
+            </menu>
+        </menus>
+    </restaurant>
+    <restaurant id="r669af07dc1605">
+        <coordonnees>
+            <nom>Dernier restau</nom>
+            <adresse>Ange-Raphael, douala, BP. 2701</adresse>
+            <restaurateur>Kamga</restaurateur>
+            <description>
+                <paragraphe />
+            </description>
+        </coordonnees>
+        <carte>
+            <plat id="p669af07dc15fd">
+                <nom>Tchieb</nom>
+                <type>2000</type>
+                <prix devise="FCFA">2000</prix>
+                <platDescription>DDD</platDescription>
+            </plat>
+        </carte>
+        <menus>
+            <menu>
+                <titre>Tché</titre>
+                <menuDescription>DDD</menuDescription>
+                <prix devise="FCFA">2000</prix>
             </menu>
         </menus>
     </restaurant>
