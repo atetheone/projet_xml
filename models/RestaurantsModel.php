@@ -57,23 +57,28 @@ class RestaurantsModel {
 
   private function parseDescription($xmlDescription) {
     $description = new Description();
-    foreach ($xmlDescription->children() as $child) {
-      if ($child->getName() == 'image') {
-          $description->addParagraphe(new Image((string)$child['url'], (string)$child['position']));
-      } elseif ($child->getName() == 'liste') {
+    foreach ($xmlDescription->paragraphe as $xmlParagraphe) {
+      $paragraphe = new Paragraphe();
+      foreach ($xmlParagraphe->children() as $child) {
+        if ($child->getName() == 'texte') {
+          $paragraphe->addContent(new Texte((string)$child));
+        } elseif ($child->getName() == 'image') {
+          $paragraphe->addContent(new Image((string)$child['url'], (string)$child['position']));
+        } elseif ($child->getName() == 'liste') {
           $items = [];
           foreach ($child->item as $item) {
-              $items[] = (string)$item;
+            $items[] = (string)$item;
           }
-          $description->addParagraphe(new Liste($items));
-      } elseif ($child->getName() == 'important') {
-          $description->addParagraphe(new Important((string)$child));
-      } else {
-          $description->addParagraphe((string)$child);
+          $paragraphe->addContent(new Liste($items));
+        } elseif ($child->getName() == 'important') {
+          $paragraphe->addContent(new Important((string)$child));
+        }
       }
+      $description->addParagraphe($paragraphe);
     }
     return $description;
   }
+
 
 
   private function createRestaurantFromXML($xmlRestaurant) {
@@ -117,39 +122,119 @@ class RestaurantsModel {
   }
 
   private function fillXMLFromRestaurant($restaurantXML, $restaurant) {
-    $xmlCoordonnees = $restaurantXML->addChild('coordonnees');
-    $xmlCoordonnees->addChild('nom', $restaurant->coordonnees->nom);
-    $xmlCoordonnees->addChild('adresse', $restaurant->coordonnees->adresse);
-    $xmlCoordonnees->addChild('restaurateur', $restaurant->coordonnees->restaurateur);
-    $xmlCoordonnees->addChild('description', $this->serializeDescription($restaurant->coordonnees->description));
-
-    $xmlCarte = $restaurantXML->addChild('carte');
-    foreach ($restaurant->carte->plats as $plat) {
-        $xmlPlat = $xmlCarte->addChild('plat');
-        $xmlPlat->addAttribute('id', $plat->id);
-        $xmlPlat->addChild('nom', $plat->nom);
-        $xmlPlat->addChild('type', $plat->type);
-        $xmlPlat->addChild('prix', $plat->prix);
-        $xmlPlat->prix->addAttribute('devise', $plat->devise);
-        $xmlPlat->addChild('platDescription', $plat->description);
+    // Mise à jour des coordonnées
+    if ($restaurantXML->coordonnees) {
+      $restaurantXML->coordonnees->nom = $restaurant->coordonnees->nom;
+      $restaurantXML->coordonnees->adresse = $restaurant->coordonnees->adresse;
+      $restaurantXML->coordonnees->restaurateur = $restaurant->coordonnees->restaurateur;
+      if (isset($restaurantXML->coordonnees->description)) {
+        unset($restaurantXML->coordonnees->description);
+      }
+      $this->serializeDescription($restaurantXML->coordonnees->addChild('description'), $restaurant->coordonnees->description);
+    } else {
+      $xmlCoordonnees = $restaurantXML->addChild('coordonnees');
+      $xmlCoordonnees->addChild('nom', $restaurant->coordonnees->nom);
+      $xmlCoordonnees->addChild('adresse', $restaurant->coordonnees->adresse);
+      $xmlCoordonnees->addChild('restaurateur', $restaurant->coordonnees->restaurateur);
+      $this->serializeDescription($xmlCoordonnees->addChild('description'), $restaurant->coordonnees->description);
     }
 
+    // Mise à jour de la carte
+    if ($restaurantXML->carte) {
+      unset($restaurantXML->carte);  // Supprimez la carte existante
+    }
+    $xmlCarte = $restaurantXML->addChild('carte');
+    foreach ($restaurant->carte->plats as $plat) {
+      $xmlPlat = $xmlCarte->addChild('plat');
+      $xmlPlat->addAttribute('id', $plat->id);
+      $xmlPlat->addChild('nom', $plat->nom);
+      $xmlPlat->addChild('type', $plat->type);
+      $xmlPrix = $xmlPlat->addChild('prix', $plat->prix);
+      $xmlPrix->addAttribute('devise', (string)$plat->devise);
+      $xmlPlat->addChild('platDescription', $plat->description);
+    }
+
+    // Mise à jour des menus
+    if ($restaurantXML->menus) {
+      unset($restaurantXML->menus);  // Supprimez les menus existants
+    }
     if (!empty($restaurant->menus)) {
       $xmlMenus = $restaurantXML->addChild('menus');
       foreach ($restaurant->menus as $menu) {
         $xmlMenu = $xmlMenus->addChild('menu');
         $xmlMenu->addChild('titre', $menu->titre);
         $xmlMenu->addChild('menuDescription', $menu->description);
-        $xmlMenu->addChild('prix', $menu->prix);
-        $xmlMenu->prix->addAttribute('devise', $menu->devise);
-      
+        $xmlPrix = $xmlMenu->addChild('prix', $menu->prix);
+        $xmlPrix->addAttribute('devise', (string)$menu->devise);
         foreach ($menu->elements as $element) {
           $xmlElement = $xmlMenu->addChild('element');
           $xmlElement->addAttribute('plat', $element->id);
         }
       }
     }
-  } 
+  }
+  /*private function fillXMLFromRestaurant($restaurantXML, $restaurant) {
+    if ($restaurantXML->coordonnees) {
+      $xmlCoordonnees = $restaurantXML->coordonnees;
+      $restaurantXML->coordonnees->nom = $restaurant->coordonnees->nom;
+      $restaurantXML->coordonnees->adresse = $restaurant->coordonnees->adresse;
+      $restaurantXML->coordonnees->restaurateur = $restaurant->coordonnees->restaurateur;
+      if (isset($restaurantXML->coordonnees->description)) {
+        unset($restaurantXML->coordonnees->description);
+      }
+      $this->serializeDescription($restaurantXML->coordonnees->addChild('description'), $restaurant->coordonnees->description);
+    } else {
+      $xmlCoordonnees = $restaurantXML->addChild('coordonnees');
+      $xmlCoordonnees->addChild('nom', $restaurant->coordonnees->nom);
+      $xmlCoordonnees->addChild('adresse', $restaurant->coordonnees->adresse);
+      $xmlCoordonnees->addChild('restaurateur', $restaurant->coordonnees->restaurateur);
+
+      $this->serializeDescription($xmlCoordonnees->addChild('description'), $restaurant->coordonnees->description);
+    }
+
+    // Mise à jour de la carte
+    $xmlCarte = $restaurantXML->addChild('carte');
+    if ($restaurantXML->carte) {
+        $xmlCarte = $restaurantXML->carte;
+        unset($restaurantXML->carte->plat);  // Supprimez les plats existants
+    } else {
+        $restaurantXML->addChild('carte');
+    }
+    
+    foreach ($restaurant->carte->plats as $plat) {
+      $xmlPlat = $xmlCarte->addChild('plat');
+      $xmlPlat->addAttribute('id', $plat->id);
+      $xmlPlat->addChild('nom', $plat->nom);
+      $xmlPlat->addChild('type', $plat->type);
+      $xmlPrix = $xmlPlat->addChild('prix', $plat->prix);
+      $xmlPrix->addAttribute('devise', (string) $plat->devise);
+      $xmlPlat->addChild('platDescription', $plat->description);
+    }
+
+    
+    $xmlMenus = $restaurantXML->addChild('menus');
+    if (!empty($restaurant->menus)) {
+      // Mise à jour des menus
+      if ($restaurantXML->menus) {
+          $xmlMenus = $restaurantXML->menus;
+          unset($restaurantXML->menus->menu);  // Supprimez les menus existants
+      } else {
+          $restaurantXML->addChild('menus');
+      }
+
+      foreach ($restaurant->menus as $menu) {
+        $xmlMenu = $xmlMenus->addChild('menu');
+        $xmlMenu->addChild('titre', $menu->titre);
+        $xmlMenu->addChild('menuDescription', $menu->description);
+        $xmlPrix = $xmlMenu->addChild('prix', $menu->prix);
+        $xmlPrix->addAttribute('devise', (string) $menu->devise);
+        foreach ($menu->elements as $element) {
+          $xmlElement = $xmlMenu->addChild('element');
+          $xmlElement->addAttribute('plat', $element->id);
+        }
+      }
+    }
+  }*/
 
   private function loadRestaurantsXML() {
     if (file_exists($this->xmlFile)) {
@@ -177,23 +262,75 @@ class RestaurantsModel {
     return $carte;
   }
 
-  private function serializeDescription($description) {
-    $xml = '';
+  private function serializeDescription($xmlDescription, $description) {
+    foreach ($xmlDescription->children() as $child) {
+      unset($child[0]); // Clear existing children
+    }
     foreach ($description->paragraphes as $paragraphe) {
-      if ($paragraphe instanceof Image) {
-        $xml .= '<image url="' . $paragraphe->url . '" position="' . $paragraphe->position . '"/>';
-      } elseif ($paragraphe instanceof Liste) {
-        $xml .= '<liste>';
-        foreach ($paragraphe->items as $item) {
-          $xml .= '<item>' . $item . '</item>';
+      $xmlParagraphe = $xmlDescription->addChild('paragraphe');
+      foreach ($paragraphe->content as $item) {
+        if ($item instanceof Texte) {
+          $xmlParagraphe->addChild('texte', htmlspecialchars($item->texte));
+        } elseif ($item instanceof Image) {
+          $xmlImage = $xmlParagraphe->addChild('image');
+          $xmlImage->addAttribute('url', htmlspecialchars($item->url));
+          $xmlImage->addAttribute('position', htmlspecialchars($item->position));
+        } elseif ($item instanceof Liste) {
+          $xmlListe = $xmlParagraphe->addChild('liste');
+          foreach ($item->items as $listItem) {
+            $xmlListe->addChild('item', htmlspecialchars($listItem));
+          }
+        } elseif ($item instanceof Important) {
+          $xmlParagraphe->addChild('important', htmlspecialchars($item->texte));
         }
-        $xml .= '</liste>';
-      } elseif ($paragraphe instanceof Important) {
-        $xml .= '<important>' . $paragraphe->texte . '</important>';
-      } else {
-        $xml .= '<paragraphe>' . $paragraphe . '</paragraphe>';
       }
     }
-    return $xml;
   }
+
+  /*private function serializeDescription($xmlDescription, $description) {
+    foreach ($xmlDescription->children() as $child) {
+      unset($child[0]); // Clear existing children
+    }
+    foreach ($description->paragraphes as $paragraphe) {
+      $xmlParagraphe = $xmlDescription->addChild('paragraphe');
+      foreach ($paragraphe->content as $item) {
+        if ($item instanceof Image) {
+          $xmlImage = $xmlParagraphe->addChild('image');
+          $xmlImage->addAttribute('url', htmlspecialchars($item->url));
+          $xmlImage->addAttribute('position', htmlspecialchars($item->position));
+        } elseif ($item instanceof Liste) {
+          $xmlListe = $xmlParagraphe->addChild('liste');
+          foreach ($item->items as $listItem) {
+              $xmlListe->addChild('item', htmlspecialchars($listItem));
+          }
+        } elseif ($item instanceof Important) {
+          $xmlParagraphe->addChild('important', htmlspecialchars($item->texte));
+        } else {
+          $xmlParagraphe->addChild('texte', htmlspecialchars($item));
+        }
+      }
+    }
+  }*/
+
+  /*private function serializeDescription($xmlDescription, $description) {
+    foreach ($xmlDescription->children() as $child) {
+      unset($child[0]); // Clear existing children
+    }
+    foreach ($description->paragraphes as $paragraphe) {
+      if ($paragraphe instanceof Image) {
+        $xmlImage = $xmlDescription->addChild('image');
+        $xmlImage->addAttribute('url', htmlspecialchars($paragraphe->url));
+        $xmlImage->addAttribute('position', htmlspecialchars($paragraphe->position));
+      } elseif ($paragraphe instanceof Liste) {
+        $xmlListe = $xmlDescription->addChild('liste');
+        foreach ($paragraphe->items as $item) {
+          $xmlListe->addChild('item', htmlspecialchars($item));
+        }
+      } elseif ($paragraphe instanceof Important) {
+        $xmlDescription->addChild('important', htmlspecialchars($paragraphe->texte));
+      } else {
+        $xmlDescription->addChild('paragraphe', htmlspecialchars($paragraphe));
+      }
+    }
+  }*/
 }
