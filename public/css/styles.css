@@ -114,7 +114,9 @@ select {
   height: auto;
 }
 
-input[type="submit"], .action-buttons a, .btn {
+input[type="submit"], 
+.action-buttons a, 
+.btn {
   display: inline-block;
   padding: 0.5rem 1rem;
   color: white;
@@ -281,20 +283,6 @@ tr:nth-child(even) {
   margin-bottom: 20px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 20px;
-  text-decoration: none;
-  background-color: #007BFF;
-  color: white;
-  border-radius: 5px;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
 
 /* Styles pour l'affichage de la carte et des menus */
 
@@ -368,17 +356,3 @@ tr:nth-child(even) {
   margin-left: 20px;
 }
 
-/* Styles pour les boutons */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 20px;
-  text-decoration: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
