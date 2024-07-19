@@ -7,7 +7,6 @@
 <h3>Description</h3>
 <?php foreach ($restaurant->coordonnees->description->paragraphes as $paragraphe): ?>
   <p class="paragraph">
-    <!-- <img class="image" src="public/img/img-restau1.jpeg" alt="Image de restaurant" style="float: left;" width="400"> -->
     <?php if ($paragraphe instanceof Image): ?>
       <img src="<?= $paragraphe->url; ?>" alt="Image de restaurant" style="float: <?= $paragraphe->position; ?>;">
     <?php elseif ($paragraphe instanceof Liste): ?>
@@ -24,24 +23,30 @@
   </p>
 <?php endforeach; ?>
 
-<p><strong>Carte:</strong></p>
-<ul>
+<h3>Carte</h3>
+<div class="carte">
   <?php foreach ($restaurant->carte->plats as $plat): ?>
-    <li><?= $plat->nom . ' - ' . $plat->type . ' - ' . $plat->prix . ' ' . $plat->devise; ?></li>
+    <div class="carte-item">
+      <h4><?= $plat->nom; ?></h4>
+      <p><strong>Type:</strong> <?= $plat->type; ?></p>
+      <p><strong>Prix:</strong> <?= $plat->prix . ' ' . $plat->devise; ?></p>
+    </div>
   <?php endforeach; ?>
-</ul>
+</div>
 
 <?php if (!empty($restaurant->menus)): ?>
-  <p><strong>Menus:</strong></p>
+  <h3>Menus</h3>
   <?php foreach ($restaurant->menus as $menu): ?>
-    <h3><?= $menu->titre; ?></h3>
-    <p><?= $menu->description; ?></p>
-    <ul>
-      <?php foreach ($menu->elements as $element): ?>
-        <li><?= $element->nom . ' - ' . $element->type . ' - ' . $element->prix . ' ' . $element->devise; ?></li>
-      <?php endforeach; ?>
-    </ul>
-    <p><strong>Prix:</strong> <?= $menu->prix . ' ' . $menu->devise; ?></p>
+    <div class="menu-item">
+      <h4><?= $menu->titre; ?></h4>
+      <p><?= $menu->description; ?></p>
+      <ul>
+        <?php foreach ($menu->elements as $element): ?>
+          <li><?= $element->nom . ' - ' . $element->type . ' - ' . $element->prix . ' ' . $element->devise; ?></li>
+        <?php endforeach; ?>
+      </ul>
+      <p><strong>Prix:</strong> <?= $menu->prix . ' ' . $menu->devise; ?></p>
+    </div>
   <?php endforeach; ?>
 <?php endif; ?>
 

@@ -294,3 +294,91 @@ tr:nth-child(even) {
 .btn:hover {
   background-color: #0056b3;
 }
+
+
+/* Styles pour l'affichage de la carte et des menus */
+
+.carte, .menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.carte-item, .menu-item {
+  flex: 1 1 calc(33.333% - 20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.carte-item h4, .menu-item h4 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.carte-item p, .menu-item p {
+  margin: 10px 0;
+}
+
+.menu-liste {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 20px 0;
+}
+
+.menu-liste li {
+  background: #f9f9f9;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image.float-right {
+  float: right;
+  margin-left: 10px;
+}
+
+.image.float-left {
+  float: left;
+  margin-right: 10px;
+}
+
+.image.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.important {
+  font-weight: bold;
+}
+
+.liste {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+/* Styles pour les boutons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
