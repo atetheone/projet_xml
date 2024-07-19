@@ -27,21 +27,28 @@
             <plat id="p1">
                 <nom>Salade de chèvre chaud</nom>
                 <type>Entrée</type>
-                <prix devise="XOF">5000</prix>
+                <prix devise="FCFA">5000</prix>
                 <platDescription>Une délicieuse salade avec du fromage de chèvre chaud.</platDescription>
             </plat>
             <plat id="p2">
                 <nom>Boeuf bourguignon</nom>
                 <type>Plat</type>
-                <prix devise="XOF">12000</prix>
+                <prix devise="FCFA">12000</prix>
                 <platDescription>Un classique de la cuisine française.</platDescription>
+            </plat>
+            <plat id="p3">
+                <nom>Tarte Tatin</nom>
+                <type>Dessert</type>
+                <prix devise="FCFA">4000</prix>
+                <platDescription>Une tarte aux pommes renversée caramélisée.
+                </platDescription>
             </plat>
         </carte>
         <menus>
             <menu>
                 <titre>Menu Dégustation</titre>
                 <menuDescription>Un menu complet pour découvrir nos spécialités.</menuDescription>
-                <prix devise="XOF">20000</prix>
+                <prix devise="FCFA">20000</prix>
                 <element plat="p1" />
                 <element plat="p2" />
             </menu>
