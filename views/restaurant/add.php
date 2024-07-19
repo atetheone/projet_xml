@@ -12,8 +12,25 @@
     <label>Restaurateur:</label>
     <input type="text" name="restaurateur" required>
 
-    <label>Description:</label>
-    <textarea name="description" required></textarea>
+    <h2>Description:</h2>
+    <div id="description">
+      <div class="description-item">
+        <select name="description[0][type]" required>
+          <option value="texte">Texte</option>
+          <option value="image">Image</option>
+          <option value="liste">Liste</option>
+          <option value="important">Important</option>
+        </select>
+        <textarea name="description[0][content]" placeholder="Contenu" required></textarea>
+        <button class="btn btn-2" type="button" onclick="removeDescriptionItem(this)">Supprimer</button>
+      </div>
+    </div>
+    <button class="btn btn-2" type="button" onclick="addDescriptionItem()">Ajouter un élément de description</button>
+    
+    <h2>Éléments de Description Ajoutés</h2>
+    <div id="descriptionList">
+        <!-- Les éléments de description ajoutés seront affichés ici -->
+    </div>
 
     <h2>Carte</h2>
     <div id="plats">
@@ -32,7 +49,7 @@
         
         <label>Description:</label>
         <textarea name="carte[0][description]"></textarea>
-        <button class="btn" type="button" onclick="addPlat()">Ajouter un plat</button>
+        <button class="btn btn-2" type="button" onclick="addPlat()">Ajouter un plat</button>
       </div>
     </div>
     <h2>Plats Ajoutés</h2>
@@ -69,10 +86,9 @@
         <select name="menus[0][elements][]" multiple>
             <!-- Les options seront remplies dynamiquement avec les plats ajoutés -->
         </select>
-        <button type="button" onclick="addElementToMenu(0)">Ajouter un élément</button>
-
+        <button class="btn btn-2" type="button" onclick="addElementToMenu(0)">Ajouter un élément</button>
       </div>
-      <button class="btn" type="button" onclick="addMenu()">Ajouter un menu</button>
+      <button class="btn btn-2" type="button" onclick="addMenu()">Ajouter un menu</button>
 
       <h2>Menus Ajoutés</h2>
       <table id="menusTable">
@@ -96,4 +112,11 @@
 
 <?php include 'views/includes/footer.php'; ?>
 
+<script>
+    let descriptionCount = 0;
+    let platCount = 0;
+    let menuCount = 0;
+    let plats = [];
+    let menus = [];
+</script>
 <script src="public/js/restaurants.js"></script>
