@@ -32,7 +32,23 @@ class Description {
   public $paragraphes = [];
 
   public function addParagraphe($paragraphe) {
-      $this->paragraphes[] = $paragraphe;
+    $this->paragraphes[] = $paragraphe;
+  }
+}
+
+class Paragraphe {
+  public $content = [];
+
+  public function addContent($item) {
+    $this->content[] = $item;
+  }
+}
+
+class Texte {
+  public $texte;
+
+  public function __construct($texte) {
+    $this->texte = $texte;
   }
 }
 
@@ -88,11 +104,11 @@ class Menu {
   public $elements = [];
 
   public function __construct($titre, $description, $prix, $devise, $elements = []) {
-      $this->titre = $titre;
-      $this->description = $description;
-      $this->prix = $prix;
-      $this->devise = $devise;
-      $this->elements = $elements;
+    $this->titre = $titre;
+    $this->description = $description;
+    $this->prix = $prix;
+    $this->devise = $devise;
+    $this->elements = $elements;
   }
 }
 
@@ -110,11 +126,5 @@ class Carte {
       }
     }
     return null;
-  }
-
-  public function show() {
-    foreach ($this->plats as $plat) {
-      echo $plat->nom . ' - ' . $plat->type . ' - ' . $plat->prix . ' ' . $plat->devise . '<br>';
-    }
   }
 }
