@@ -22,15 +22,42 @@ class RestaurantController {
 
   public function add() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $restaurant = new Restaurant(
-        'r' . uniqid(),
+      $coordonnees = new Coordonnees(
         $_POST['nom'],
         $_POST['adresse'],
         $_POST['restaurateur'],
-        $_POST['description'],
-        $this->parseCarte($_POST['carte']),
-        $this->parseMenus($_POST['menus'])
+        $this->parseDescription($_POST['description'])
       );
+
+      $carte = new Carte();
+      foreach ($_POST['carte'] as $platData) {
+        $carte->addPlat(new Plat(
+          'p' . uniqid(),
+          $platData['nom'],
+          $platData['type'],
+          $platData['prix'],
+          $platData['devise'],
+          $platData['description']
+        ));
+      }
+
+      $menus = [];
+      if (!empty($_POST['menus'])) {
+        foreach ($_POST['menus'] as $menuData) {
+          $elements = [];
+          foreach ($menuData['elements'] as $element) {
+            $elements[] = $element;
+          }
+          $menus[] = new Menu(
+            $menuData['titre'],
+            $menuData['description'],
+            $menuData['prix'],
+            $elements
+          );
+        }
+      }
+
+      $restaurant = new Restaurant('r' . uniqid(), $coordonnees, $carte, $menus);
       $this->restaurantsModel->addRestaurant($restaurant);
       header('Location: index.php?controller=restaurant&action=index');
     } else {
@@ -42,15 +69,42 @@ class RestaurantController {
     $id = $_GET['id'];
     $restaurant = $this->restaurantsModel->getRestaurantById($id);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $updatedRestaurant = new Restaurant(
-          $id,
-          $_POST['nom'],
-          $_POST['adresse'],
-          $_POST['restaurateur'],
-          $_POST['description'],
-          $this->parseCarte($_POST['carte']),
-          $this->parseMenus($_POST['menus'])
-      );
+      $coordonnees = new Coordonnees(
+        $_POST['nom'],
+        $_POST['adresse'],
+        $_POST['restaurateur'],
+        $this->parseDescription($_POST['description'])
+    );
+
+    $carte = new Carte();
+    foreach ($_POST['carte'] as $platData) {
+      $carte->addPlat(new Plat(
+          uniqid(),
+          $platData['nom'],
+          $platData['type'],
+          $platData['prix'],
+          $platData['devise'],
+          $platData['description']
+      ));
+    }
+
+    $menus = [];
+    if (!empty($_POST['menus'])) {
+      foreach ($_POST['menus'] as $menuData) {
+        $elements = [];
+        foreach ($menuData['elements'] as $element) {
+          $elements[] = $element;
+        }
+        $menus[] = new Menu(
+          $menuData['titre'],
+          $menuData['description'],
+          $menuData['prix'],
+          $elements
+        );
+      }
+    }
+
+    $restaurant = new Restaurant($id, $coordonnees, $carte, $menus);
       $this->restaurantsModel->updateRestaurant($updatedRestaurant);
       header('Location: index.php?controller=restaurant&action=index');
     } else {
@@ -91,5 +145,30 @@ class RestaurantController {
       ];
     }
     return $menus;
+  }
+
+  private function parseDescription($descriptionString) {
+    $description = new Description();
+    $elements = explode(';', $descriptionString);
+    foreach ($elements as $element) {
+      list($type, $content) = explode(':', $element, 2);
+      switch ($type) {
+        case 'paragraphe':
+          $description->addParagraphe(trim($content));
+          break;
+        case 'image':
+          list($url, $position) = explode(',', $content);
+          $description->addParagraphe(new Image(trim($url), trim($position)));
+          break;
+        case 'liste':
+          $items = array_map('trim', explode(',', $content));
+          $description->addParagraphe(new Liste($items));
+          break;
+        case 'important':
+          $description->addParagraphe(new Important(trim($content)));
+          break;
+      }
+    }
+    return $description;
   }
 }
