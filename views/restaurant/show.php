@@ -37,10 +37,8 @@
     <h3><?= $menu->titre; ?></h3>
     <p><?= $menu->description; ?></p>
     <ul>
-      <?= $restaurant->carte->getPlatById("p1") ?>
       <?php foreach ($menu->elements as $element): ?>
-        <?= $element->plat; ?>
-        <li><?= $restaurant->carte->getPlatById($element->plat); ?></li>
+        <li><?= $element->nom . ' - ' . $element->type . ' - ' . $element->prix . ' ' . $element->devise; ?></li>
       <?php endforeach; ?>
     </ul>
     <p><strong>Prix:</strong> <?= $menu->prix . ' ' . $menu->devise; ?></p>
