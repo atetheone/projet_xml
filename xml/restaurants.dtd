@@ -7,7 +7,8 @@
 <!ELEMENT restaurateur (#PCDATA)>
 
 <!ELEMENT description (paragraphe+)>
-<!ELEMENT paragraphe (#PCDATA | image | liste | important)*>
+<!ELEMENT paragraphe (texte | image | liste | important)*>
+<!ELEMENT texte (#PCDATA)>
 <!ELEMENT image EMPTY>
 <!ATTLIST image url CDATA #REQUIRED
                   position (droite | gauche | centre) #IMPLIED>
@@ -24,6 +25,7 @@
 <!ELEMENT platDescription (#PCDATA | important)*>
 
 <!ELEMENT menus (menu+)>
+<!ATTLIST menus ordre (prix|apparition) "apparition">
 <!ELEMENT menu (titre, menuDescription, prix, element*)>
 <!ELEMENT titre (#PCDATA)>
 <!ELEMENT menuDescription (#PCDATA)>
