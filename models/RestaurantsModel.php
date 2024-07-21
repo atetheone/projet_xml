@@ -173,13 +173,29 @@ class RestaurantsModel {
       }
     }
   }
-
+  
   private function loadRestaurantsXML() {
-    if (file_exists($this->xmlFile)) {
-      return simplexml_load_file($this->xmlFile);
-    } else {
+    if (!file_exists($this->xmlFile)) {
       throw new Exception('Échec lors de l\'ouverture du fichier ' . $this->xmlFile);
     }
+  
+    // Charger le document XML avec DOMDocument
+    $dom = new DOMDocument();
+    $dom->preserveWhiteSpace = false;
+    $dom->formatOutput = true;
+
+    // Charger le fichier XML
+    $dom->load($this->xmlFile);
+
+    // Activer la validation
+    $dom->validateOnParse = true;
+
+    // Valider le document XML contre la DTD
+    if (!$dom->validate()) {
+      throw new Exception('Le fichier XML n\'est pas valide selon la DTD');
+    }
+
+    return simplexml_load_file($this->xmlFile);
   }
 
   private function saveXML() {
