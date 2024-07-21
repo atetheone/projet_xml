@@ -387,37 +387,6 @@ tr:nth-child(even) {
   margin-bottom: 10px;
 }
 
-
-/* .paragraph img.float-left {
-  order: -1;
-  margin-right: 15px;
-}
-
-.paragraph img.float-right {
-  order: 1;
-  margin-left: 15px;
-}
-
-.paragraph img.float-center {
-  order: 0;
-  margin: 0 auto;
-}
-
-.paragraph p, .paragraph ul, .paragraph strong {
-  flex: 1;
-} */
-
-
-
-/* .important {
-  font-weight: bold;
-}
-
-.liste {
-  list-style-type: disc;
-  margin-left: 20px;
-} */
-
 #plats .plat,
 #menus .menu,
 #description .description-item 
@@ -427,4 +396,29 @@ tr:nth-child(even) {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #e9ecef;
+}
+
+.horaire {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.horaire select,
+.horaire input {
+  margin-right: 10px;
+}
+
+/* Ajout d'horaire*/
+.container {
+  display: flex;
+}
+
+.container > div {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.container > div:last-child {
+  margin-right: 0;
 }
