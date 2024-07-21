@@ -27,7 +27,7 @@
   <label>Synopsis *</label>
   <textarea name="synopsis" required></textarea>
   
-  <label>Acteurs *</label>
+  <label>Acteurs * (acteur1, acteur2, ...)</label>
   <input type="text" name="acteurs" placeholder="Séparez par des virgules" required>
   
   <label>Notes (sur 5)</label>
