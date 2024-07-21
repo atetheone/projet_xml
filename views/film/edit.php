@@ -33,13 +33,57 @@
     <textarea name="notes"><?= implode('; ', array_map(function($note) {
         return $note['source'] . ':' . $note['text'];
     }, $film->notes)); ?></textarea>
+
+    <div class="container">
+        <!-- Formulaire d'ajout d'horaire -->
+        <div>
+            <h3>Ajouter un horaire</h3>
+            <div id="horaire-form">
+                <label>Jour</label>
+                <select id="jour">
+                    <option value="lundi">Lundi</option>
+                    <option value="mardi">Mardi</option>
+                    <option value="mercredi">Mercredi</option>
+                    <option value="jeudi">Jeudi</option>
+                    <option value="vendredi">Vendredi</option>
+                    <option value="samedi">Samedi</option>
+                    <option value="dimanche">Dimanche</option>
+                </select>
+                <label>Heure</label>
+                <input type="number" id="heure" placeholder="Heure" min="0" max="23">
+                <label>Minute</label>
+                <input type="number" id="minute" placeholder="Minute" min="0" max="59">
+                <button class="btn btn-2" type="button" onclick="addHoraire()">Ajouter un horaire</button>
+            </div>
+        </div>
+
+        <!-- Tableau des horaires -->
+        <div>
+            <h3>Horaires existants</h3>
+            <table id="horaires-table">
+                <thead>
+                    <tr>
+                        <th>Jour</th>
+                        <th>Heure</th>
+                        <th>Minute</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les horaires ajoutés seront affichés ici -->
+                </tbody>
+            </table>
+        </div>
+    </div>
     
-    <label>Horaires</label>
-    <textarea name="horaires"><?= implode('; ', array_map(function($horaire) {
-        return $horaire['jour'] . ':' . $horaire['heure'] . ':' . $horaire['minute'];
-    }, $film->horaires)); ?></textarea>
+    <!-- <label>Horaires</label> -->
     
     <input type="submit" value="Modifier le Film">
 </form>
 
 <?php include 'views/includes/footer.php'; ?>
+
+<script>
+    const horaires = <?= json_encode($film->horaires); ?>;
+</script>
+<script src="public/js/films.js"></script>
