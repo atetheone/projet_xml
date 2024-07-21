@@ -137,4 +137,30 @@
             </menu>
         </menus>
     </restaurant>
+    <restaurant id="r669d3ce7d1793">
+        <coordonnees>
+            <nom>Le nouveau monde</nom>
+            <adresse>Fann Hock</adresse>
+            <restaurateur>Diop Sarr</restaurateur>
+            <description>
+                <paragraphe />
+            </description>
+        </coordonnees>
+        <carte>
+            <plat id="p669d3ce7d1781">
+                <nom>Rien comme plat </nom>
+                <type>Entrée</type>
+                <prix devise="FCFA">5000</prix>
+                <platDescription>Rien du tout</platDescription>
+            </plat>
+        </carte>
+        <menus>
+            <menu>
+                <titre>Tcheck</titre>
+                <menuDescription>HHHHHH</menuDescription>
+                <prix devise="FCFA">2000</prix>
+                <element plat="p669d3ce7d1781" />
+            </menu>
+        </menus>
+    </restaurant>
 </restaurants>
