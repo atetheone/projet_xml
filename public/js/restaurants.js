@@ -83,29 +83,6 @@ function addPlat() {
 }
 
 
-/*function addPlat() {
-  const nom = document.querySelector(`input[name="carte[${platCount - 1}][nom]"]`).value;
-  const type = document.querySelector(`input[name="carte[${platCount - 1}][type]"]`).value;
-  const prix = document.querySelector(`input[name="carte[${platCount - 1}][prix]"]`).value;
-  const devise = document.querySelector(`input[name="carte[${platCount - 1}][devise]"]`).value;
-  const description = document.querySelector(`textarea[name="carte[${platCount - 1}][description]"]`).value;
-
-  plats.push({ nom, type, prix, devise, description });
-
-  console.log(plats);
-
-  updatePlatsTable();
-
-  document.querySelector(`input[name="carte[${platCount - 1}][nom]"]`).value = '';
-  document.querySelector(`input[name="carte[${platCount - 1}][type]"]`).value = '';
-  document.querySelector(`input[name="carte[${platCount - 1}][prix]"]`).value = '';
-  document.querySelector(`input[name="carte[${platCount - 1}][devise]"]`).value = '';
-  document.querySelector(`textarea[name="carte[${platCount - 1}][description]"]`).value = '';
-
-  updateMenuOptions();
-  platCount++;
-}*/
-
 function updatePlatsTable() {
     const platsTableBody = document.getElementById('platsTable').querySelector('tbody');
     platsTableBody.innerHTML = '';
@@ -201,7 +178,34 @@ function deleteMenu(index) {
 
 function addElementToMenu(menuIndex) {
   const elementsSelect = document.querySelector(`select[name="menus[${menuIndex}][elements][]"]`);
-  elementsSelect.innerHTML = plats.map((plat, index) => `<option value="${index}">${plat.nom}</option>`).join('');
+  const selectedElements = Array.from(elementsSelect.selectedOptions).map(option => option.value);
+  const menuElementsDiv = document.getElementById(`menu-elements-${menuIndex}`);
+  menuElementsDiv.innerHTML = '';
+
+  selectedElements.forEach((elementIndex, index) => {
+      const elementDiv = document.createElement('div');
+      elementDiv.className = 'menu-element';
+      elementDiv.innerHTML = `
+          <span>${plats[elementIndex].nom}</span>
+          <button class="btn btn-2" type="button" onclick="editElementInMenu(${menuIndex}, ${index})">Modifier</button>
+          <button class="btn btn-2" type="button" onclick="deleteElementFromMenu(${menuIndex}, ${index})">Supprimer</button>
+      `;
+      menuElementsDiv.appendChild(elementDiv);
+  });
+
+  menus[menuIndex].elements = selectedElements;
+}
+
+function editElementInMenu(menuIndex, elementIndex) {
+  const element = menus[menuIndex].elements[elementIndex];
+  const elementsSelect = document.querySelector(`select[name="menus[${menuCount - 1}][elements][]"]`);
+  elementsSelect.value = element;
+  deleteElementFromMenu(menuIndex, elementIndex);
+}
+
+function deleteElementFromMenu(menuIndex, elementIndex) {
+  menus[menuIndex].elements.splice(elementIndex, 1);
+  addElementToMenu(menuIndex);
 }
 
 function updateMenuOptions() {
