@@ -32,6 +32,8 @@ Bienvenue sur le projet Portail Cinéma ! Ce projet est un portail web permettan
 - **views/film/** : Contient les vues spécifiques pour la gestion et la visualisation des films.
 - **views/restaurant/** : Contient les vues spécifiques pour la gestion et la visualisation des restaurants.
 - **public/css/** : Contient les fichiers CSS pour le style de l'application.
+- **public/js/** : Contient les fichiers JavaScript pour les interactions dynamiques
+- **public/img/** : Contient les images utilisées dans l'application.
 - **config/** : Contient les fichiers de configuration pour les utilisateurs et d'autres paramètres.
 
 ## Prérequis
