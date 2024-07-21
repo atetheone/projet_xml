@@ -87,6 +87,9 @@
             <!-- Les options seront remplies dynamiquement avec les plats ajoutés -->
         </select>
         <button class="btn btn-2" type="button" onclick="addElementToMenu(0)">Ajouter un élément</button>
+        <div id="menu-elements-0" class="menu-elements">
+          <!-- Les éléments ajoutés seront affichés ici -->
+        </div>
       </div>
       <button class="btn btn-2" type="button" onclick="addMenu()">Ajouter un menu</button>
 
