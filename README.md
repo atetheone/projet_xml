@@ -44,19 +44,23 @@ Bienvenue sur le projet Portail Cinéma ! Ce projet est un portail web permettan
 ## Installation
 
 1. Clonez le dépôt sur votre machine locale :
+
    ```sh
    git clone https://github.com/atetheone/projet_xml.git
    ```
+
 2. Accédez au répertoire du projet :
+
    ```sh
    cd projet_xml
    ```
+
 3. Configurez votre serveur web pour servir le projet. Par exemple, pour Apache, configurez un hôte virtuel pointant vers le répertoire du projet.
 
 ## Utilisation
 
 1. Démarrez votre serveur web.
-2. Ouvrez un navigateur et accédez à l'URL configurée pour votre projet (par exemple, http://localhost/projet_xml).
+2. Ouvrez un navigateur et accédez à l'URL configurée pour votre projet (par exemple, <http://localhost/projet_xml>).
 3. Utilisez les options de navigation pour voir les films et les restaurants.
 4. Pour accéder aux fonctionnalités d'administration, connectez-vous avec les informations d'identification administrateur.
 
@@ -65,14 +69,11 @@ Bienvenue sur le projet Portail Cinéma ! Ce projet est un portail web permettan
 - **Nom d'utilisateur** : admin
 - **Mot de passe** : adminpass
 
-
 ## Contributeurs
 
-- [TOUGUE ARISTIDE ATE](https://github.com/atetheone) 
+- [TOUGUE ARISTIDE ATE](https://github.com/atetheone)
 - [MAGUETTE NDIAYE](https://github.com/onlyMaguette)
 - [BACAR IMANE](https://github.com/username3)
 - [CATHY SADYKH DIAW](https://github.com/username4)
 - [MAMYA SAMANE AIDARA](https://github.com/username4)
 - [STECH CLARIN MOLINGUI](https://github.com/username4)
-
-
