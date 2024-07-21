@@ -9,6 +9,9 @@
 <p><strong>Acteurs:</strong> <?= implode(', ', $film->acteurs); ?></p>
 <p><strong>Année:</strong> <?= $film->annee; ?></p>
 <p><strong>Synopsis:</strong> <?= $film->synopsis; ?></p>
+<p><strong>Notes:</strong> <?= implode(', ', array_map(function($note) {
+    return $note['source'] . ': ' . $note['text'] . '/5';
+}, $film->notes)); ?></p>
 
 <h3>Horaires</h3>
 
