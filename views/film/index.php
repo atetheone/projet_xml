@@ -20,11 +20,9 @@
   <?php foreach ($films as $film): ?>
   <tr>
     <td><?= $film->titre; ?></td>
-    <td><?= $film->duree_heures . 'h ' . $film->duree_minutes . 'm'; ?></td>
+    <td><?= $film->duree_heures . 'h ' . $film->duree_minutes . 'mn'; ?></td>
     <td>
-      <?php foreach ($film->genres as $genre): ?>
-        <?= $genre . ' '; ?>
-      <?php endforeach; ?>
+      <?php echo implode(', ', $film->genres); ?>
     </td>
     <td><?= $film->realisateur; ?></td>
     <td><?= $film->langue; ?></td>
