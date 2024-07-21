@@ -11,7 +11,7 @@
     <label>Durée (minutes)</label>
     <input type="number" name="duree_minutes" value="<?= $film->duree_minutes; ?>" required>
     
-    <label>Genres</label>
+    <label>Genres (genre1, genre2, ...)</label>
     <input type="text" name="genres" value="<?= implode(', ', $film->genres); ?>" required>
     
     <label>Réalisateur</label>
@@ -26,10 +26,10 @@
     <label>Synopsis</label>
     <textarea name="synopsis" required><?= $film->synopsis; ?></textarea>
     
-    <label>Acteurs</label>
+    <label>Acteurs (acteur1, acteur2, ...)</label>
     <input type="text" name="acteurs" value="<?= implode(', ', $film->acteurs); ?>" required>
     
-    <label>Notes</label>
+    <label>Notes (source:note;)</label>
     <textarea name="notes"><?= implode('; ', array_map(function($note) {
         return $note['source'] . ':' . $note['text'];
     }, $film->notes)); ?></textarea>
