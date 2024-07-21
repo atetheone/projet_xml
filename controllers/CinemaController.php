@@ -24,22 +24,7 @@ class CinemaController {
     $this->adminVerify();
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $film = new Film(
-        'f' . uniqid(),
-        $_POST['titre'],
-        $_POST['duree_heures'],
-        $_POST['duree_minutes'],
-        explode(',', $_POST['genres']),
-        $_POST['realisateur'],
-        $_POST['langue'],
-        explode(',', $_POST['acteurs']),
-        $_POST['annee'],
-        $this->parseNotes($_POST['notes']),
-        $_POST['synopsis'],
-        $this->parseHoraires($_POST['horaires'])
-      );
-      $this->cinema->addFilm($film);
-      header('Location: index.php?controller=film&action=index');
+      $this->saveFilm('add');
     } else {
         include 'views/film/add.php';
     }
@@ -51,22 +36,7 @@ class CinemaController {
     $id = $_GET['id'];
     $film = $this->cinema->getFilmById($id);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $updatedFilm = new Film(
-        $id,
-        $_POST['titre'],
-        $_POST['duree_heures'],
-        $_POST['duree_minutes'],
-        explode(',', $_POST['genres']),
-        $_POST['realisateur'],
-        $_POST['langue'],
-        explode(',', $_POST['acteurs']),
-        $_POST['annee'],
-        $this->parseNotes($_POST['notes']),
-        $_POST['synopsis'],
-        $this->parseHoraires($_POST['horaires'])
-      );
-      $this->cinema->updateFilm($updatedFilm);
-      header('Location: index.php?controller=film&action=index');
+      $this->saveFilm('edit', $id);
     } else {
       include 'views/film/edit.php';
     }
@@ -89,17 +59,47 @@ class CinemaController {
     return $notes;
   }
 
-  private function parseHoraires($horairesString) {
+  private function parseHoraires($horairesArray) {
     $horaires = [];
-    foreach (explode(';', $horairesString) as $horaire) {
-      list($jour, $heure, $minute) = explode(':', $horaire);
+
+    foreach ($horairesArray as $horaire) {
+      $jour = $horaire['jour'];
+      $heure = $horaire['heure'];
+      $minute = isset($horaire['minute']) ? $horaire['minute'] : '00';
       $horaires[] = [
         'jour' => trim($jour),
         'heure' => trim($heure),
-        'minute' => trim($minute) ?: '00'
+        'minute' => trim($minute)
       ];
     }
+
     return $horaires;
+  }
+
+  private function saveFilm($action, $id = null) {
+    $horairesArray = json_decode($_POST['horaires'], true);
+    $film = new Film(
+      $action === 'add' ? 'f' . uniqid() : $id,
+      $_POST['titre'],
+      $_POST['duree_heures'],
+      $_POST['duree_minutes'],
+      explode(',', $_POST['genres']),
+      $_POST['realisateur'],
+      $_POST['langue'],
+      explode(',', $_POST['acteurs']),
+      $_POST['annee'],
+      $this->parseNotes($_POST['notes']),
+      $_POST['synopsis'],
+      $this->parseHoraires($horairesArray)
+    );
+
+    if ($action === 'add') {
+      $this->cinema->addFilm($film);
+    } else {
+      $this->cinema->updateFilm($film);
+    }
+
+    header('Location: index.php?controller=film&action=index');
   }
 
   private function adminVerify() {
