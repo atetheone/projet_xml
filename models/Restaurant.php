@@ -5,12 +5,14 @@ class Restaurant {
   public $coordonnees;
   public $carte;
   public $menus;
+  public $menusOrdre;
 
-  public function __construct($id, $coordonnees, $carte, $menus = []) {
+  public function __construct($id, $coordonnees, $carte, $menus = [], $ordre = 'apparition') {
       $this->id = $id;
       $this->coordonnees = $coordonnees;
       $this->carte = $carte;
       $this->menus = $menus;
+      $this->menusOrdre = $ordre;
   }
 }
 
