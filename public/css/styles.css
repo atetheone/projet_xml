@@ -290,7 +290,7 @@ tr:nth-child(even) {
 
 /* Styles pour l'affichage de la carte et des menus */
 
-.carte, .menu {
+.carte {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -421,4 +421,70 @@ tr:nth-child(even) {
 
 .container > div:last-child {
   margin-right: 0;
+}
+
+
+/* Elements de menu */
+.menu-elements-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.menu-elements-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.menu-elements-container button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.menu-elements-container button:hover {
+  background-color: #218838;
+}
+
+#menu-elements {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+
+.menu-element span {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.menu-element button {
+  padding: 5px 10px;
+  margin-left: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.menu-element button:hover {
+  background-color: #0056b3;
 }
