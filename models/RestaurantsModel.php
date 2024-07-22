@@ -103,6 +103,7 @@ class RestaurantsModel {
 
     $menus = [];
     if (isset($xmlRestaurant->menus)) {
+      $ordre = $xmlRestaurant->menus['ordre'] ?? 'apparition';
       foreach ($xmlRestaurant->menus->menu as $xmlMenu) {
         $elements = [];
         foreach ($xmlMenu->element as $element) {
@@ -118,7 +119,13 @@ class RestaurantsModel {
       }
     }
 
-    return new Restaurant((string)$xmlRestaurant['id'], $coordonnees, $carte, $menus);
+    return new Restaurant(
+      (string)$xmlRestaurant['id'], 
+      $coordonnees, 
+      $carte, 
+      $menus,
+      $ordre
+    );
   }
 
   private function fillXMLFromRestaurant($restaurantXML, $restaurant) {
@@ -160,6 +167,7 @@ class RestaurantsModel {
     }
     if (!empty($restaurant->menus)) {
       $xmlMenus = $restaurantXML->addChild('menus');
+      $xmlMenus->addAttribute('ordre', $restaurant->ordre ?? 'apparition'); // Nouvelle ligne
       foreach ($restaurant->menus as $menu) {
         $xmlMenu = $xmlMenus->addChild('menu');
         $xmlMenu->addChild('titre', $menu->titre);
@@ -173,7 +181,7 @@ class RestaurantsModel {
       }
     }
   }
-  
+
   private function loadRestaurantsXML() {
     if (!file_exists($this->xmlFile)) {
       throw new Exception('Échec lors de l\'ouverture du fichier ' . $this->xmlFile);
