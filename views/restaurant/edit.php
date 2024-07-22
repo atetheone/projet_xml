@@ -40,27 +40,23 @@
 
   <h2>Carte</h2>
   <div id="plats">
-    <?php foreach ($restaurant->carte->plats as $index => $plat): ?>
-      <div class="plat">
-        <label>Nom du plat:</label>
-        <input type="text" name="carte[<?= $index; ?>][nom]" value="<?= $plat->nom; ?>" required>
-        
-        <label>Type:</label>
-        <input type="text" name="carte[<?= $index; ?>][type]" value="<?= $plat->type; ?>" required>
-        
-        <label>Prix:</label>
-        <input type="text" name="carte[<?= $index; ?>][prix]" value="<?= $plat->prix; ?>" required>
-        
-        <label>Devise:</label>
-        <input type="text" name="carte[<?= $index; ?>][devise]" value="<?= $plat->devise; ?>" required>
-        
-        <label>Description:</label>
-        <textarea name="carte[<?= $index; ?>][description]" required><?= $plat->description; ?></textarea>
-        <button class="btn btn-2" type="button" onclick="removePlat(this)">Supprimer</button>
-      </div>
-    <?php endforeach; ?>
+    <div class="plat">
+    <label>Nom du plat:</label>
+    <input type="text" id="platNom">
+
+    <label>Type:</label>
+    <input type="text" id="platType">
+
+    <label>Prix:</label>
+    <input type="text" id="platPrix">
+
+    <label>Devise:</label>
+    <input type="text" id="platDevise">
+
+    <label>Description:</label>
+    <textarea id="platDescription"></textarea>
+    <button class="btn btn-2" type="button" onclick="addPlat()">Ajouter un plat</button>
   </div>
-  <button class="btn btn-2" type="button" onclick="addPlat()">Ajouter un plat</button>
 
   <h2>Plats Ajoutés</h2>
   <table id="platsTable">
@@ -91,6 +87,9 @@
         
         <label>Prix:</label>
         <input type="text" name="menus[<?= $index; ?>][prix]" value="<?= $menu->prix; ?>" required>
+
+        <label>Devise:</label>
+        <input type="text" name="menus[<?= $index; ?>][devise]" value="<?= $menu->devise; ?>" required>
         
         <label>Éléments:</label>
         <select name="menus[<?= $index; ?>][elements][]" multiple>
@@ -131,6 +130,7 @@
   let menuCount = <?= count($restaurant->menus); ?>;
   let plats = <?= json_encode($restaurant->carte->plats); ?>;
   let menus = <?= json_encode($restaurant->menus); ?>;
+  let editingPlatIndex = -1;
 </script>
 
 <script src="public/js/restaurants.js"></script>
