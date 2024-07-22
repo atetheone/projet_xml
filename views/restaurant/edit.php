@@ -41,84 +41,89 @@
   <h2>Carte</h2>
   <div id="plats">
     <div class="plat">
-    <label>Nom du plat:</label>
-    <input type="text" id="platNom">
+      <label>Nom du plat:</label>
+      <input type="text" id="platNom">
 
-    <label>Type:</label>
-    <input type="text" id="platType">
+      <label>Type:</label>
+      <input type="text" id="platType">
 
-    <label>Prix:</label>
-    <input type="text" id="platPrix">
+      <label>Prix:</label>
+      <input type="text" id="platPrix">
 
-    <label>Devise:</label>
-    <input type="text" id="platDevise">
+      <label>Devise:</label>
+      <input type="text" id="platDevise">
 
-    <label>Description:</label>
-    <textarea id="platDescription"></textarea>
-    <button class="btn btn-2" type="button" onclick="addPlat()">Ajouter un plat</button>
+      <label>Description:</label>
+      <textarea id="platDescription"></textarea>
+      <button class="btn btn-2" type="button" onclick="addPlat()">Ajouter un plat</button>
+    </div>
+
+    <h2>Plats Ajoutés</h2>
+    <table id="platsTable">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Type</th>
+          <th>Prix</th>
+          <th>Devise</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+          <!-- Les plats ajoutés seront affichés ici -->
+      </tbody>
+    </table>
   </div>
-
-  <h2>Plats Ajoutés</h2>
-  <table id="platsTable">
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Type</th>
-        <th>Prix</th>
-        <th>Devise</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-        <!-- Les plats ajoutés seront affichés ici -->
-    </tbody>
-  </table>
 
   <h2>Menus</h2>
   <div id="menus">
-    <?php foreach ($restaurant->menus as $index => $menu): ?>
-      <div class="menu">
-        <label>Titre du menu:</label>
-        <input type="text" name="menus[<?= $index; ?>][titre]" value="<?= $menu->titre; ?>" required>
-        
-        <label>Description:</label>
-        <textarea name="menus[<?= $index; ?>][description]" required><?= $menu->description; ?></textarea>
-        
-        <label>Prix:</label>
-        <input type="text" name="menus[<?= $index; ?>][prix]" value="<?= $menu->prix; ?>" required>
+    <div class="menu">
+      <label>Titre du menu:</label>
+      <input type="text" id="menuTitre">
 
-        <label>Devise:</label>
-        <input type="text" name="menus[<?= $index; ?>][devise]" value="<?= $menu->devise; ?>" required>
-        
-        <label>Éléments:</label>
-        <select name="menus[<?= $index; ?>][elements][]" multiple>
-          <?php foreach ($plats as $platIndex => $plat): ?>
-            <option value="<?= $platIndex; ?>" <?= in_array($platIndex, $menu->elements) ? 'selected' : ''; ?>><?= $plat->nom; ?></option>
+      <label>Description:</label>
+      <textarea id="menuDescription"></textarea>
+
+      <label>Prix:</label>
+      <input type="text" id="menuPrix">
+
+      <label>Devise:</label>
+      <input type="text" id="menuDevise">
+
+      <label>Éléments:</label>
+  
+      <div class="menu-elements-container">
+        <select id="menuElements">
+          <?php foreach ($restaurant->carte->plats as $plat): ?>
+            <option value="<?= htmlspecialchars($plat->id); ?>"><?= htmlspecialchars($plat->nom); ?></option>
           <?php endforeach; ?>
         </select>
-        <button type="button" onclick="removeMenu(this)">Supprimer</button>
+        <button class="btn btn-2" type="button" onclick="addElementToMenu()">Ajouter un élément</button>
+        <div id="menu-elements"></div>
       </div>
-    <?php endforeach; ?>
-  </div>
-  <button class="btn btn-2" type="button" onclick="addMenu()">Ajouter un menu</button>
+      <button class="btn btn-2" type="button" onclick="addMenu()">Ajouter un menu</button>
+    </div>
 
-  <h2>Menus Ajoutés</h2>
-  <table id="menusTable">
-    <thead>
-      <tr>
-        <th>Titre</th>
-        <th>Description</th>
-        <th>Prix</th>
-        <th>Éléments</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-        <!-- Les menus ajoutés seront affichés ici -->
-    </tbody>
-  </table>
-  <button class="btn btn-2" type="submit">Modifier le Restaurant</button>
+    <h3>Menus Ajoutés</h3>
+    <table id="menusTable">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Prix</th>
+          <th>Éléments</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+          <!-- Les menus ajoutés seront affichés ici -->
+      </tbody>
+    </table>
+  </div>
+
+  
+  <button class="btn" type="submit">Modifier le Restaurant</button>
 </form>
 
 <?php include 'views/includes/footer.php'; ?>
@@ -131,6 +136,7 @@
   let plats = <?= json_encode($restaurant->carte->plats); ?>;
   let menus = <?= json_encode($restaurant->menus); ?>;
   let editingPlatIndex = -1;
+  let editingMenuIndex = -1;
 </script>
 
 <script src="public/js/restaurants.js"></script>
