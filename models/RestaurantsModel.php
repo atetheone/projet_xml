@@ -102,12 +102,12 @@ class RestaurantsModel {
     }
 
     $menus = [];
+    $ordre = $xmlRestaurant->menus['ordre'] ?? 'apparition';
     if (isset($xmlRestaurant->menus)) {
-      $ordre = $xmlRestaurant->menus['ordre'] ?? 'apparition';
       foreach ($xmlRestaurant->menus->menu as $xmlMenu) {
         $elements = [];
         foreach ($xmlMenu->element as $element) {
-          $elements[] = $carte->getPlatById((string)$element['plat']);
+          $elements[] = (string)$element['plat'];
         }
         $menus[] = new Menu(
           (string)$xmlMenu->titre,
@@ -162,12 +162,10 @@ class RestaurantsModel {
     }
 
     // Mise à jour des menus
-    if ($restaurantXML->menus) {
-      unset($restaurantXML->menus);  // Supprimez les menus existants
-    }
+    unset($restaurantXML->menus);  // Supprimez les menus existants
     if (!empty($restaurant->menus)) {
       $xmlMenus = $restaurantXML->addChild('menus');
-      $xmlMenus->addAttribute('ordre', $restaurant->ordre ?? 'apparition'); // Nouvelle ligne
+      $xmlMenus->addAttribute('ordre', $restaurant->menusOrdre ?? 'apparition'); // Nouvelle ligne
       foreach ($restaurant->menus as $menu) {
         $xmlMenu = $xmlMenus->addChild('menu');
         $xmlMenu->addChild('titre', $menu->titre);
@@ -176,7 +174,7 @@ class RestaurantsModel {
         $xmlPrix->addAttribute('devise', (string)$menu->devise);
         foreach ($menu->elements as $element) {
           $xmlElement = $xmlMenu->addChild('element');
-          $xmlElement->addAttribute('plat', $element->id);
+          $xmlElement->addAttribute('plat', $element);
         }
       }
     }
