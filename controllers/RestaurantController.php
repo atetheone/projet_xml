@@ -21,6 +21,7 @@ class RestaurantController {
   }
 
   public function add() {
+    $this->adminVerify();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $restaurant = $this->createRestaurantFromPostData();
       $this->restaurantsModel->addRestaurant($restaurant);
@@ -31,6 +32,8 @@ class RestaurantController {
   }
 
   public function edit() {
+    $this->adminVerify();
+
     $id = $_GET['id'];
     $restaurant = $this->restaurantsModel->getRestaurantById($id);
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -43,6 +46,8 @@ class RestaurantController {
   }
 
   public function delete() {
+    $this->adminVerify();
+
     $id = $_GET['id'];
     $this->restaurantsModel->deleteRestaurant($id);
     header('Location: index.php?controller=restaurant&action=index');
@@ -58,8 +63,9 @@ class RestaurantController {
 
     $carte = new Carte();
     foreach ($_POST['carte'] as $platData) {
+      $platId = isset($platData['id']) ? $platData['id'] : 'p' . uniqid();
       $carte->addPlat(new Plat(
-        'p' . uniqid(),
+        $platId,
         $platData['nom'],
         $platData['type'],
         $platData['prix'],
@@ -72,9 +78,10 @@ class RestaurantController {
     if (!empty($_POST['menus'])) {
       foreach ($_POST['menus'] as $menuData) {
         $elements = [];
+        var_dump($menuData['elements']);
         if (isset($menuData['elements'])) {
-          foreach ($menuData['elements'] as $element) {
-            $elements[] = $carte->getPlatById($element);
+          foreach ($menuData['elements'] as $elementId) {
+            $elements[] = $elementId;
           }
         }
         $menus[] = new Menu(
@@ -128,30 +135,10 @@ class RestaurantController {
     return $description;
   }
 
-/*
-
-  private function parseDescription($descriptionString) {
-    $description = new Description();
-    $elements = explode(';', $descriptionString);
-    foreach ($elements as $element) {
-      list($type, $content) = explode(':', $element, 2);
-      switch ($type) {
-        case 'paragraphe':
-          $description->addParagraphe(trim($content));
-          break;
-        case 'image':
-          list($url, $position) = explode(',', $content);
-          $description->addParagraphe(new Image(trim($url), trim($position)));
-          break;
-        case 'liste':
-          $items = array_map('trim', explode(',', $content));
-          $description->addParagraphe(new Liste($items));
-          break;
-        case 'important':
-          $description->addParagraphe(new Important(trim($content)));
-          break;
-      }
+  private function adminVerify() {
+    if (!AuthController::checkAdmin()) {
+      header('Location: index.php?controller=auth&action=login');
+      exit();
     }
-    return $description;
-  }*/
+  }
 }
