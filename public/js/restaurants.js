@@ -60,23 +60,30 @@ function updateDescriptionList() {
 }
 
 function addPlat() {
-  const nom = document.querySelector(`input[name="carte[${platCount}][nom]"]`).value;
-  const type = document.querySelector(`input[name="carte[${platCount}][type]"]`).value;
-  const prix = document.querySelector(`input[name="carte[${platCount}][prix]"]`).value;
-  const devise = document.querySelector(`input[name="carte[${platCount}][devise]"]`).value;
-  const description = document.querySelector(`textarea[name="carte[${platCount}][description]"]`).value;
+  const nom = document.getElementById('platNom').value;
+  const type = document.getElementById('platType').value;
+  const prix = document.getElementById('platPrix').value;
+  const devise = document.getElementById('platDevise').value;
+  const description = document.getElementById('platDescription').value;
 
-  plats.push({ nom, type, prix, devise, description });
+  const plat = { nom, type, prix, devise, description };
+
+  if (editingPlatIndex >= 0) {
+    plats[editingPlatIndex] = plat;
+    editingPlatIndex = -1;
+  } else {
+    plats.push(plat);
+  }
 
   console.log(plats);
 
   updatePlatsTable();
 
-  document.querySelector(`input[name="carte[${platCount}][nom]"]`).value = '';
-  document.querySelector(`input[name="carte[${platCount}][type]"]`).value = '';
-  document.querySelector(`input[name="carte[${platCount}][prix]"]`).value = '';
-  document.querySelector(`input[name="carte[${platCount}][devise]"]`).value = '';
-  document.querySelector(`textarea[name="carte[${platCount}][description]"]`).value = '';
+  document.getElementById('platNom').value = '';
+  document.getElementById('platType').value = '';
+  document.getElementById('platPrix').value = '';
+  document.getElementById('platDevise').value = '';
+  document.getElementById('platDescription').value = '';
 
   platCount++;
   updateMenuOptions();
@@ -104,15 +111,17 @@ function updatePlatsTable() {
 
 function editPlat(index) {
   const plat = plats[index];
-  document.querySelector(`input[name="carte[${platCount - 1}][nom]"]`).value = plat.nom;
-  document.querySelector(`input[name="carte[${platCount - 1}][type]"]`).value = plat.type;
-  document.querySelector(`input[name="carte[${platCount - 1}][prix]"]`).value = plat.prix;
-  document.querySelector(`input[name="carte[${platCount - 1}][devise]"]`).value = plat.devise;
-  document.querySelector(`textarea[name="carte[${platCount - 1}][description]"]`).value = plat.description;
+  document.getElementById('platNom').value = plat.nom;
+  document.getElementById('platType').value = plat.type;
+  document.getElementById('platPrix').value = plat.prix;
+  document.getElementById('platDevise').value = plat.devise;
+  document.getElementById('platDescription').value = plat.description;
 
   plats.splice(index, 1);
+  editingPlatIndex = index;
   updatePlatsTable();
 }
+
 
 function deletePlat(index) {
   plats.splice(index, 1);
@@ -219,6 +228,9 @@ function updateMenuOptions() {
 function prepareSubmission() {
   const form = document.querySelector('form');
 
+  form.querySelectorAll('input[type="hidden"]').forEach(input => input.remove());
+
+
   plats.forEach((plat, index) => {
     form.appendChild(createHiddenField(`carte[${index}][nom]`, plat.nom));
     form.appendChild(createHiddenField(`carte[${index}][type]`, plat.type));
@@ -231,6 +243,7 @@ function prepareSubmission() {
     form.appendChild(createHiddenField(`menus[${index}][titre]`, menu.titre));
     form.appendChild(createHiddenField(`menus[${index}][description]`, menu.description));
     form.appendChild(createHiddenField(`menus[${index}][prix]`, menu.prix));
+    form.appendChild(createHiddenField(`menus[${index}][devise]`, menu.devise));
     menu.elements.forEach((element, elementIndex) => {
       form.appendChild(createHiddenField(`menus[${index}][elements][${elementIndex}]`, element));
     });
@@ -245,4 +258,8 @@ function createHiddenField(name, value) {
   return input;
 }
 
-document.querySelector('form').addEventListener('submit', prepareSubmission);
+document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  prepareSubmission();
+  this.submit();
+});
