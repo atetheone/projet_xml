@@ -130,20 +130,32 @@ function deletePlat(index) {
 }
 
 function addMenu() {
-  const titre = document.querySelector(`input[name="menus[${menuCount}][titre]"]`).value;
-  const description = document.querySelector(`textarea[name="menus[${menuCount}][description]"]`).value;
-  const prix = document.querySelector(`input[name="menus[${menuCount}][prix]"]`).value;
-  const elements = Array.from(document.querySelector(`select[name="menus[${menuCount}][elements][]"]`).selectedOptions)
+  const titre = document.getElementById('menuTitre').value;
+  const description = document.getElementById('menuDescription').value;
+  const prix = document.getElementById('menuPrix').value;
+  const devise = document.getElementById('menuDevise').value;
+  const elements = Array.from(document.getElementById('menuElements').selectedOptions)
                        .map(option => option.value);
 
-  menus.push({ titre, description, prix, elements });
+
+  const menu = { titre, description, prix, devise, elements };
+
+  console.log(JSON.stringify(menu, null, 2));
+
+  if (editingMenuIndex >= 0) {
+    menus[editingMenuIndex] = menu;
+    editingMenuIndex = -1;
+  } else {
+    menus.push(menu);
+  }
   updateMenusTable();
 
   // Vider les champs de saisie
-  document.querySelector(`input[name="menus[${menuCount}][titre]"]`).value = '';
-  document.querySelector(`textarea[name="menus[${menuCount}][description]"]`).value = '';
-  document.querySelector(`input[name="menus[${menuCount}][prix]"]`).value = '';
-  document.querySelector(`select[name="menus[${menuCount}][elements][]"]`).innerHTML = '';
+  document.getElementById('menuTitre').value = '';
+  document.getElementById('menuDescription').value = '';
+  document.getElementById('menuPrix').value = '';
+  document.getElementById('menuDevise').value = ''
+  document.getElementById('menuElements').innerHTML = plats.map((plat, index) => `<option value="${index}">${plat.nom}</option>`).join('');
 
   menuCount++;
   updateMenuOptions();
@@ -161,8 +173,8 @@ function updateMenusTable() {
       <td>${menu.prix}</td>
       <td>${menu.elements.map(element => plats[element].nom).join(', ')}</td>
       <td>
-          <button class="btn btn-2" type="button" onclick="editMenu(${index})">Modifier</button>
-          <button class="btn btn-2" type="button" onclick="deleteMenu(${index})">Supprimer</button>
+          <button class="btn btn-2" type="button" onclick="editMenu(${index})"><i class="fas fa-edit"></i>Modifier</button>
+          <button class="btn btn-2" type="button" onclick="deleteMenu(${index})"><i class="fas fa-trash-alt"></i>Supprimer</button>
       </td>
     `;
   });
@@ -170,11 +182,13 @@ function updateMenusTable() {
 
 function editMenu(index) {
   const menu = menus[index];
-  document.querySelector(`input[name="menus[${menuCount - 1}][titre]"]`).value = menu.titre;
-  document.querySelector(`textarea[name="menus[${menuCount - 1}][description]"]`).value = menu.description;
-  document.querySelector(`input[name="menus[${menuCount - 1}][prix]"]`).value = menu.prix;
-  const elementsSelect = document.querySelector(`select[name="menus[${menuCount - 1}][elements][]"]`);
-  elementsSelect.innerHTML = plats.map((plat, index) => `<option value="${index}" ${menu.elements.includes(index.toString()) ? 'selected' : ''}>${plat.nom}</option>`).join('');
+  document.getElementById('menuTitre').value = menu.titre;
+  document.getElementById('menuDescription').value = menu.description;
+  document.getElementById('menuPrix').value = menu.prix;
+  document.getElementById('menuDevise').value = menu.devise;
+
+  const elementsSelect = document.getElementById('menuElements');
+  elementsSelect.innerHTML = plats.map((plat, platIndex) => `<option value="${platIndex}" ${menu.elements.includes(platIndex.toString()) ? 'selected' : ''}>${plat.nom}</option>`).join('');
 
   menus.splice(index, 1);
   updateMenusTable();
@@ -185,43 +199,48 @@ function deleteMenu(index) {
   updateMenusTable();
 }
 
-function addElementToMenu(menuIndex) {
-  const elementsSelect = document.querySelector(`select[name="menus[${menuIndex}][elements][]"]`);
+function addElementToMenu() {
+  const elementsSelect = document.getElementById('menuElements');;
   const selectedElements = Array.from(elementsSelect.selectedOptions).map(option => option.value);
-  const menuElementsDiv = document.getElementById(`menu-elements-${menuIndex}`);
+  const menuElementsDiv = document.getElementById('menu-elements');
   menuElementsDiv.innerHTML = '';
 
-  selectedElements.forEach((elementIndex, index) => {
-      const elementDiv = document.createElement('div');
-      elementDiv.className = 'menu-element';
-      elementDiv.innerHTML = `
-          <span>${plats[elementIndex].nom}</span>
-          <button class="btn btn-2" type="button" onclick="editElementInMenu(${menuIndex}, ${index})">Modifier</button>
-          <button class="btn btn-2" type="button" onclick="deleteElementFromMenu(${menuIndex}, ${index})">Supprimer</button>
-      `;
-      menuElementsDiv.appendChild(elementDiv);
+  selectedElements.forEach((elementIndex) => {
+    const elementDiv = document.createElement('div');
+    elementDiv.className = 'menu-element';
+    elementDiv.innerHTML = `
+      <span>${plats[elementIndex].nom}</span>
+      <button class="btn btn-2" type="button" onclick="editElementInMenu(${elementIndex})">Modifier</button>
+      <button class="btn btn-2" type="button" onclick="removeElementFromMenu(${elementIndex})">Supprimer</button>
+    `;
+    menuElementsDiv.appendChild(elementDiv);
   });
 
-  menus[menuIndex].elements = selectedElements;
+  // Met à jour les éléments du menu en cours d'édition
+  if (editingMenuIndex >= 0) {
+    menus[editingMenuIndex].elements = selectedElements;
+  }
 }
 
-function editElementInMenu(menuIndex, elementIndex) {
+function editElementInMenu(elementIndex) {
   const element = menus[menuIndex].elements[elementIndex];
-  const elementsSelect = document.querySelector(`select[name="menus[${menuCount - 1}][elements][]"]`);
+  const elementsSelect = document.getElementById('menuElements');
   elementsSelect.value = element;
-  deleteElementFromMenu(menuIndex, elementIndex);
+  removeElementFromMenu(elementIndex);
 }
 
-function deleteElementFromMenu(menuIndex, elementIndex) {
-  menus[menuIndex].elements.splice(elementIndex, 1);
-  addElementToMenu(menuIndex);
+
+function removeElementFromMenu(elementIndex) {
+  const elementsSelect = document.getElementById('menuElements');
+  elementsSelect.options[elementIndex].selected = false;
+  addElementToMenu();
 }
 
 function updateMenuOptions() {
-  const menuSelects = document.querySelectorAll('#menus select');
-  const options = plats.map((plat, index) => `<option value="${index}">${plat.nom}</option>`).join('');
+  const menuSelects = document.querySelectorAll('#menuElements');
+  const options = plats.map((plat) => `<option value="${plat.id}">${plat.nom}</option>`).join('');
   menuSelects.forEach(select => {
-      select.innerHTML = options;
+    select.innerHTML = options;
   });
 }
 
@@ -244,6 +263,7 @@ function prepareSubmission() {
     form.appendChild(createHiddenField(`menus[${index}][description]`, menu.description));
     form.appendChild(createHiddenField(`menus[${index}][prix]`, menu.prix));
     form.appendChild(createHiddenField(`menus[${index}][devise]`, menu.devise));
+    console.log(menu.elements);
     menu.elements.forEach((element, elementIndex) => {
       form.appendChild(createHiddenField(`menus[${index}][elements][${elementIndex}]`, element));
     });
@@ -263,3 +283,26 @@ document.querySelector('form').addEventListener('submit', function(event) {
   prepareSubmission();
   this.submit();
 });
+
+export {
+  addDescriptionItem,
+  removeDescriptionItem,
+  updateDescriptionList,
+
+  addPlat,
+  updatePlatsTable,
+  editPlat,
+  deletePlat,
+
+  addMenu,
+  updateMenusTable,
+  editMenu,
+  deleteMenu,
+
+  addElementToMenu,
+  editElementInMenu,
+  removeElementFromMenu,
+
+  updateMenuOptions,
+  prepareSubmission
+}
