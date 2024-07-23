@@ -45,7 +45,8 @@
       <p><?= htmlspecialchars($menu->description); ?></p>
       <ul>
         <?php foreach ($menu->elements as $element): ?>
-          <li><?= htmlspecialchars($element->nom) . ' - ' . htmlspecialchars($element->type) . ' - ' . htmlspecialchars($element->prix) . ' ' . htmlspecialchars($element->devise); ?></li>
+          <?php $elemPlat = $restaurant->carte->getPlatById($element); ?>
+          <li><?= htmlspecialchars($elemPlat->nom) . ' - ' . htmlspecialchars($elemPlat->type) . ' - ' . htmlspecialchars($elemPlat->prix) . ' ' . htmlspecialchars($elemPlat->devise); ?></li>
         <?php endforeach; ?>
       </ul>
       <p><strong>Prix:</strong> <?= htmlspecialchars($menu->prix) . ' ' . htmlspecialchars($menu->devise); ?></p>
