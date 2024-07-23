@@ -63,7 +63,7 @@ class RestaurantController {
 
     $carte = new Carte();
     foreach ($_POST['carte'] as $platData) {
-      $platId = isset($platData['id']) ? $platData['id'] : 'p' . uniqid();
+      $platId = $platData['id'] ?? 'p' . uniqid();
       $carte->addPlat(new Plat(
         $platId,
         $platData['nom'],
