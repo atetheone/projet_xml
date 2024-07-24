@@ -17,7 +17,7 @@
 <!ELEMENT important (#PCDATA)>
 
 <!ELEMENT carte (plat+)>
-<!ELEMENT plat (nom, type, prix, platDescription)>
+<!ELEMENT plat (nom, type, prix, platDescription?)>
 <!ATTLIST plat id ID #REQUIRED>
 <!ELEMENT type (#PCDATA)>
 <!ELEMENT prix (#PCDATA)>
@@ -26,7 +26,7 @@
 
 <!ELEMENT menus (menu+)>
 <!ATTLIST menus ordre (prix|apparition) "apparition">
-<!ELEMENT menu (titre, menuDescription, prix, element*)>
+<!ELEMENT menu (titre, menuDescription?, prix, element*)>
 <!ELEMENT titre (#PCDATA)>
 <!ELEMENT menuDescription (#PCDATA)>
 <!ELEMENT element EMPTY>
