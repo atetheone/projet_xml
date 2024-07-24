@@ -37,6 +37,7 @@ function addDescriptionItem() {
   `;
   descriptionDiv.appendChild(newItem);
   descriptionCount++;
+  updateDescriptionList();
 }
 
 function removeDescriptionItem(button) {
