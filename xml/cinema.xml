@@ -1,60 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE cinema SYSTEM "cinema.dtd">
 <cinema>
-    <film id="f1">
-        <titre>Tenet</titre>
-        <duree heures="1" minutes="30" />
-        <genres>
-            <genre>Action</genre>
-            <genre> Thiller</genre>
-            <genre> Espionnage</genre>
-        </genres>
-        <realisateur>Christopher Nolan</realisateur>
-        <langue>VO</langue>
-        <acteurs>
-            <acteur>John David Washington</acteur>
-            <acteur> Robert Pattinson</acteur>
-            <acteur> Elizabeth Debicki</acteur>
-        </acteurs>
-        <annee>2020</annee>
-        <notes>
-            <note source="presse">3.6</note>
-            <note source="spectateur">4.1</note>
-        </notes>
-        <synopsis>            Muni d'un seul mot – Tenet – et décidé à se battre pour sauver le monde, notre protagoniste sillonne l'univers crépusculaire de l'espionnage international.&#13;
-            Sa mission le projettera dans une dimension qui dépasse le temps.&#13;
-            Pourtant, il ne s'agit pas d'un voyage dans le temps, mais d'un renversement temporel...&#13;
-        </synopsis>
-        <horaires>
-            <horaire jour="lundi" heure="14" minute="00" />
-            <horaire jour="lundi" heure="19" minute="40" />
-            <horaire jour="lundi" heure="22" minute="10" />
-            <horaire jour="mardi" heure="14" minute="00" />
-            <horaire jour="mardi" heure="19" minute="40" />
-            <horaire jour="mardi" heure="22" minute="10" />
-            <horaire jour="mercredi" heure="14" minute="00" />
-            <horaire jour="mercredi" heure="16" minute="40" />
-            <horaire jour="mercredi" heure="19" minute="40" />
-            <horaire jour="mercredi" heure="22" minute="10" />
-            <horaire jour="jeudi" heure="14" minute="00" />
-            <horaire jour="jeudi" heure="19" minute="40" />
-            <horaire jour="jeudi" heure="22" minute="10" />
-            <horaire jour="vendredi" heure="14" minute="00" />
-            <horaire jour="vendredi" heure="19" minute="40" />
-            <horaire jour="vendredi" heure="22" minute="10" />
-            <horaire jour="samedi" heure="14" minute="00" />
-            <horaire jour="samedi" heure="16" minute="40" />
-            <horaire jour="samedi" heure="19" minute="40" />
-            <horaire jour="samedi" heure="22" minute="10" />
-            <horaire jour="dimanche" heure="10" minute="20" />
-            <horaire jour="dimanche" heure="14" minute="00" />
-            <horaire jour="dimanche" heure="16" minute="40" />
-            <horaire jour="dimanche" heure="20" minute="20" />
-        </horaires>
-    </film>
+    
     <film id="c6696ec6b68465">
         <titre>Alice in the borderland</titre>
-        <duree heures="2" minutes="00" />
+        <duree heures="2" minutes="00"/>
         <genres>
             <genre>Action</genre>
             <genre> Drame</genre>
@@ -72,12 +22,12 @@
         </notes>
         <synopsis>Film très dangereux</synopsis>
         <horaires>
-            <horaire jour="lundi" heure="20" minute="00" />
+            <horaire jour="lundi" heure="20" minute="00"/>
         </horaires>
     </film>
     <film id="f66984447ed5cd">
         <titre>Naruto</titre>
-        <duree heures="1" minutes="25" />
+        <duree heures="1" minutes="25"/>
         <genres>
             <genre>Action</genre>
             <genre>Animation</genre>
@@ -90,17 +40,17 @@
         </acteurs>
         <annee>2010</annee>
         <notes>
-            <note source="" />
+            <note source=""/>
         </notes>
         <synopsis>RAS</synopsis>
         <horaires>
-            <horaire jour="lundi" heure="19" minute="00" />
-            <horaire jour="mardi" heure="20" minute="00" />
+            <horaire jour="lundi" heure="19" minute="00"/>
+            <horaire jour="mardi" heure="20" minute="00"/>
         </horaires>
     </film>
     <film id="f669d7e9523803">
         <titre>Avatar</titre>
-        <duree heures="1" minutes="50" />
+        <duree heures="1" minutes="50"/>
         <genres>
             <genre>Action</genre>
             <genre> Fantastique</genre>
@@ -119,8 +69,8 @@
             Sur la lointaine planète de Pandora, Jake Sully, un héros malgré lui, se lance dans une quête de rédemption, de découverte, d'amour inattendu, dont l'issue sera un combat héroïque pour sauver toute une civilisation.&#13;
         </synopsis>
         <horaires>
-            <horaire jour="lundi" heure="20" minute="00" />
-            <horaire jour="mercredi" heure="22" minute="00" />
+            <horaire jour="lundi" heure="20" minute="00"/>
+            <horaire jour="mercredi" heure="22" minute="00"/>
         </horaires>
     </film>
 </cinema>
