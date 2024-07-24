@@ -7,6 +7,7 @@
             <adresse>123 Rue de Fass, Dakar</adresse>
             <restaurateur>Jean Dupont</restaurateur>
 
+
             <description>
                 <paragraphe>
                     <texte>Un restaurant offrant une cuisine française exquise.</texte>
@@ -26,35 +27,27 @@
                 </paragraphe>
             </description>
         </coordonnees>
+
+
         <carte>
-
-
-            <plat id="p669af0a047444">
-                <nom>Salade de chèvre chaud</nom>
-                <type>Entrée</type>
-                <prix devise="FCFA">5000</prix>
-                <platDescription>Une délicieuse salade avec du fromage de chèvre chaud.</platDescription>
-            </plat>
-            <plat id="p669af0a04744b">
+            <plat id="p669ff7973dfd0">
                 <nom>Boeuf bourguignon</nom>
                 <type>Plat</type>
-                <prix devise="FCFA">12000</prix>
+                <prix devise="FCFA">12500</prix>
                 <platDescription>Un classique de la cuisine française.</platDescription>
             </plat>
-            <plat id="p669af0a047461">
+            <plat id="p669ff7973dfd4">
                 <nom>Tarte Tatin</nom>
                 <type>Dessert</type>
                 <prix devise="FCFA">4000</prix>
-                <platDescription>Une tarte aux pommes renversée caramélisée. </platDescription>
             </plat>
         </carte>
-        <menus>
-
-
+        <menus ordre="apparition">
             <menu>
                 <titre>Menu Dégustation</titre>
-                <menuDescription>Un menu complet pour découvrir nos spécialités.</menuDescription>
-                <prix devise="FCFA">20000</prix>
+                <menuDescription>Meilleut menu complet</menuDescription>
+                <prix devise="FCFA">23500</prix>
+                <element plat="p669ff7973dfd4" />
             </menu>
         </menus>
     </restaurant>
@@ -80,8 +73,9 @@
         <menus>
             <menu>
                 <titre>Tché</titre>
-                <menuDescription>RAD</menuDescription>
-                <prix devise="Array">2000</prix>
+                <menuDescription>DDD</menuDescription>
+                <prix devise="FCFA">2000</prix>
+                <element plat="p669a96b59c435" />
             </menu>
         </menus>
     </restaurant>
@@ -103,12 +97,27 @@
                 <prix devise="FCFA">10000</prix>
                 <platDescription>Les meilleures nouilles</platDescription>
             </plat>
+            <plat id="p669aa617b2067">
+                <nom>Onigiri</nom>
+                <type>Entrée</type>
+                <prix devise="FCFA">2000</prix>
+                <platDescription>Le meilleur pour les otakus</platDescription>
+            </plat>
+            <plat id="p669aa617b2068">
+                <nom>Yakitori</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">5000</prix>
+                <platDescription>Brochettes de poulet grillé</platDescription>
+            </plat>
         </carte>
         <menus>
             <menu>
                 <titre>Ramen complet</titre>
                 <menuDescription>Le meilleur pour les otakus</menuDescription>
                 <prix devise="FCFA">15000</prix>
+                <element plat="p669aa617b2066" />
+                <element plat="p669aa617b2067" />
+                <element plat="p669aa617b2068" />
             </menu>
         </menus>
     </restaurant>
@@ -118,22 +127,31 @@
             <adresse>Ange-Raphael, douala, BP. 2701</adresse>
             <restaurateur>Kamga</restaurateur>
             <description>
-                <paragraphe />
+                <paragraphe>
+                    <texte>Un restaurant offrant une cuisine camerounaise authentique.</texte>
+                </paragraphe>
             </description>
         </coordonnees>
         <carte>
-            <plat id="p669af07dc15fd">
-                <nom>Tchieb</nom>
-                <type>2000</type>
+            <plat id="p669af07dc1599">
+                <nom>Brochettes de viande</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">5000</prix>
+                <platDescription>Les meilleures brochettes de viande</platDescription>
+            </plat>
+            <plat id="p669af07dc1600">
+                <nom>Beignets de banane</nom>
+                <type>Dessert</type>
                 <prix devise="FCFA">2000</prix>
-                <platDescription>DDD</platDescription>
+                <platDescription>Les meilleurs beignets de banane</platDescription>
             </plat>
         </carte>
         <menus>
             <menu>
-                <titre>Tché</titre>
-                <menuDescription>DDD</menuDescription>
-                <prix devise="FCFA">2000</prix>
+                <titre> Menu complet</titre>
+                <menuDescription>Le meilleur pour les otakus</menuDescription>
+                <prix devise="FCFA">7000</prix>
+                <element plat="p669af07dc1599" />
             </menu>
         </menus>
     </restaurant>
@@ -160,6 +178,41 @@
                 <menuDescription>HHHHHH</menuDescription>
                 <prix devise="FCFA">2000</prix>
                 <element plat="p669d3ce7d1781" />
+            </menu>
+        </menus>
+    </restaurant>
+    <restaurant id="r66a0f216e103e">
+        <coordonnees>
+            <nom>La cuisine Made in Côte d'Ivoire</nom>
+            <adresse>Rufisque</adresse>
+            <restaurateur>Diop Sarr</restaurateur>
+            <description>
+                <paragraphe />
+            </description>
+        </coordonnees>
+        <carte>
+            <plat id="p61dfd5124786b4">
+                <nom>Attiéké</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">3000</prix>
+                <platDescription>L'attiéké est un plat traditionnel ivoirien à base de manioc
+                    fermenté.</platDescription>
+            </plat>
+            <plat id="p61dfd52e19506c">
+                <nom>Alloco</nom>
+                <type>Entrée</type>
+                <prix devise="FCFA">2000</prix>
+                <platDescription>Alloco est un plat traditionnel ivoirien à base de bananes
+                    plantains frites.</platDescription>
+            </plat>
+        </carte>
+        <menus ordre="apparition">
+            <menu>
+                <titre>Menu complet</titre>
+                <menuDescription>Menu complet de la cuisine ivoirienne.</menuDescription>
+                <prix devise="FCFA">6000</prix>
+                <element plat="p61dfd5124786b4" />
+                <element plat="p61dfd52e19506c" />
             </menu>
         </menus>
     </restaurant>
