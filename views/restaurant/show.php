@@ -31,6 +31,9 @@
   <?php foreach ($restaurant->carte->plats as $plat): ?>
     <div class="carte-item">
       <h4><?= htmlspecialchars($plat->nom); ?></h4>
+      <?php if (!empty($plat->description)): ?>
+        <p><?= htmlspecialchars($plat->description); ?></p>
+      <?php endif; ?>
       <p><strong>Type:</strong> <?= htmlspecialchars($plat->type); ?></p>
       <p><strong>Prix:</strong> <?= htmlspecialchars($plat->prix) . ' ' . htmlspecialchars($plat->devise); ?></p>
     </div>
@@ -42,7 +45,9 @@
   <?php foreach ($restaurant->menus as $menu): ?>
     <div class="menu-item">
       <h4><?= htmlspecialchars($menu->titre); ?></h4>
-      <p><?= htmlspecialchars($menu->description); ?></p>
+      <?php if (!empty($menu->description)): ?>
+        <p><?= htmlspecialchars($menu->description); ?></p>
+      <?php endif; ?>
       <ul>
         <?php foreach ($menu->elements as $element): ?>
           <?php $elemPlat = $restaurant->carte->getPlatById($element); ?>
