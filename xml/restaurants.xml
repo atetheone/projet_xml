@@ -51,34 +51,237 @@
             </menu>
         </menus>
     </restaurant>
-    <restaurant id="r669a96b59c441">
+    <restaurant id="r2">
         <coordonnees>
-            <nom>Nouveau Monde</nom>
-            <adresse>Fass, Dakar</adresse>
-            <restaurateur>Até</restaurateur>
+            <nom>Sushi Zen</nom>
+            <adresse>456 Avenue de la Paix, Dakar</adresse>
+            <restaurateur>Hiroshi Tanaka</restaurateur>
             <description>
                 <paragraphe>
-                    <texte>Un restaurant offrant une cuisine fusion.</texte>
+                    <texte>Découvrez les délices de la cuisine japonaise authentique.</texte>
+                </paragraphe>
+                <paragraphe>
+                    <texte>Ambiance zen et reposante.</texte>
+                </paragraphe>
+                <paragraphe>
+                    <important>Réservez votre table pour une expérience inoubliable.</important>
                 </paragraphe>
             </description>
         </coordonnees>
         <carte>
-            <plat id="p669a96b59c435">
-                <nom>Tchieb</nom>
+            <plat id="p3">
+                <nom>Sushi Mix</nom>
                 <type>Plat</type>
-                <prix devise="FCFA">2000</prix>
-                <platDescription>RADD</platDescription>
+                <prix devise="FCFA">15000</prix>
+                <platDescription>Un assortiment de sushis frais.</platDescription>
+            </plat>
+            <plat id="p4">
+                <nom>Mochi</nom>
+                <type>Dessert</type>
+                <prix devise="FCFA">5000</prix>
+                <platDescription>Un dessert japonais traditionnel à base de riz gluant.</platDescription>
             </plat>
         </carte>
-        <menus>
+        <menus ordre="apparition">
             <menu>
-                <titre>Tché</titre>
-                <menuDescription>DDD</menuDescription>
-                <prix devise="FCFA">2000</prix>
-                <element plat="p669a96b59c435" />
+                <titre>Menu Sushi</titre>
+                <prix devise="FCFA">18000</prix>
+                <element plat="p3" />
+                <element plat="p4" />
             </menu>
         </menus>
     </restaurant>
+
+    <restaurant id="r3">
+        <coordonnees>
+            <nom>La Pizzeria</nom>
+            <adresse>789 Boulevard de l'Indépendance, Dakar</adresse>
+            <restaurateur>Mario Rossi</restaurateur>
+            <description>
+                <paragraphe>
+                    <texte>Un goût authentique de l'Italie au cœur de Dakar.</texte>
+                </paragraphe>
+                <paragraphe>
+                    <texte>Des ingrédients frais et une pâte faite maison.</texte>
+                </paragraphe>
+            </description>
+        </coordonnees>
+        <carte>
+            <plat id="p5">
+                <nom>Margherita</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">8000</prix>
+                <platDescription>La pizza classique italienne avec tomate, mozzarella et basilic.</platDescription>
+            </plat>
+            <plat id="p6">
+                <nom>Tiramisu</nom>
+                <type>Dessert</type>
+                <prix devise="FCFA">6000</prix>
+            </plat>
+        </carte>
+        <menus ordre="apparition">
+            <menu>
+                <titre>Menu Pizza</titre>
+                <menuDescription>Un repas complet pour les amateurs de pizza.</menuDescription>
+                <prix devise="FCFA">12000</prix>
+                <element plat="p5" />
+                <element plat="p6" />
+            </menu>
+        </menus>
+    </restaurant>
+    <restaurant id="r4">
+        <coordonnees>
+            <nom>Le Chef Gourmand</nom>
+            <adresse>12 Rue de l'Étoile, Dakar</adresse>
+            <restaurateur>Paul Martin</restaurateur>
+            <description>
+                <paragraphe>
+                    <texte>Bienvenue au Chef Gourmand, où chaque repas est une aventure culinaire.</texte>
+                </paragraphe>
+                <paragraphe>
+                    <texte>Une ambiance chaleureuse et conviviale.</texte>
+                </paragraphe>
+                <paragraphe>
+                    <image url="public/img/restaurant_interieur.jpg" position="centre" />
+                </paragraphe>
+                <paragraphe>
+                    <liste>
+                        <item>Ingrédients frais</item>
+                        <item>Service impeccable</item>
+                        <item>Chef étoilé</item>
+                    </liste>
+                </paragraphe>
+            </description>
+        </coordonnees>
+        <carte>
+            <plat id="p10">
+                <nom>Foie Gras</nom>
+                <type>Entrée</type>
+                <prix devise="FCFA">18000</prix>
+                <platDescription>Foie gras servi avec une compote de figues.</platDescription>
+            </plat>
+            <plat id="p20">
+                <nom>Côte de Bœuf</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">30000</prix>
+                <platDescription>Une côte de bœuf grillée à la perfection.</platDescription>
+            </plat>
+            <plat id="p30">
+                <nom>Saumon Fumé</nom>
+                <type>Entrée</type>
+                <prix devise="FCFA">15000</prix>
+                <platDescription>Saumon fumé maison servi avec des blinis et de la crème fraîche.</platDescription>
+            </plat>
+            <plat id="p40">
+                <nom>Ratatouille</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">12000</prix>
+                <platDescription>Un mélange de légumes frais mijotés à la perfection.</platDescription>
+            </plat>
+            <plat id="p50">
+                <nom>Crème Brûlée</nom>
+                <type>Dessert</type>
+                <prix devise="FCFA">8000</prix>
+                <platDescription>Un dessert classique avec une touche de vanille.</platDescription>
+            </plat>
+        </carte>
+        <menus ordre="apparition">
+            <menu>
+                <titre>Menu Gourmet</titre>
+                <menuDescription>Un menu complet pour les amateurs de haute cuisine.</menuDescription>
+                <prix devise="FCFA">50000</prix>
+                <element plat="p10" />
+                <element plat="p20" />
+                <element plat="p50" />
+            </menu>
+            <menu>
+                <titre>Menu Végétarien</titre>
+                <menuDescription>Un menu sain et délicieux pour les végétariens.</menuDescription>
+                <prix devise="FCFA">35000</prix>
+                <element plat="p30" />
+                <element plat="p40" />
+                <element plat="p50" />
+            </menu>
+        </menus>
+    </restaurant>
+    <restaurant id="r669a96b59c441">
+        <coordonnees>
+            <nom>Le Baobab</nom>
+            <adresse>456 Avenue du Sénégal, Dakar</adresse>
+            <restaurateur>Mamadou Ndiaye</restaurateur>
+            <description>
+                <paragraphe>
+                    <texte>Le Baobab offre une expérience culinaire authentique sénégalaise.</texte>
+                </paragraphe>
+                <paragraphe>
+                    <texte>Ambiance chaleureuse et accueillante avec une décoration typique.</texte>
+                </paragraphe>
+                <paragraphe>
+                    <image url="public/img/baobab_interieur.jpg" position="centre" />
+                </paragraphe>
+                <paragraphe>
+                    <liste>
+                        <item>Ingrédients locaux frais</item>
+                        <item>Recettes traditionnelles</item>
+                        <item>Service amical</item>
+                    </liste>
+                </paragraphe>
+            </description>
+        </coordonnees>
+        <carte>
+            <plat id="p01">
+                <nom>Thieboudienne</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">5000</prix>
+                <platDescription>Le plat national du Sénégal, composé de poisson, riz, et légumes.</platDescription>
+            </plat>
+            <plat id="p02">
+                <nom>Yassa Poulet</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">4500</prix>
+                <platDescription>Un délicieux plat de poulet mariné avec des oignons et du citron.</platDescription>
+            </plat>
+            <plat id="p03">
+                <nom>Mafé</nom>
+                <type>Plat</type>
+                <prix devise="FCFA">5500</prix>
+                <platDescription>Un ragoût de viande dans une sauce d'arachide.</platDescription>
+            </plat>
+            <plat id="p04">
+                <nom>Accra</nom>
+                <type>Entrée</type>
+                <prix devise="FCFA">2000</prix>
+                <platDescription>Beignets de poisson épicés.</platDescription>
+            </plat>
+            <plat id="p05">
+                <nom>Thiakry</nom>
+                <type>Dessert</type>
+                <prix devise="FCFA">3000</prix>
+                <platDescription>Un dessert à base de couscous sucré et de lait caillé.</platDescription>
+            </plat>
+        </carte>
+        <menus ordre="apparition">
+            <menu>
+                <titre>Menu Traditionnel</titre>
+                <menuDescription>Un menu complet pour découvrir les saveurs sénégalaises.</menuDescription>
+                <prix devise="FCFA">12000</prix>
+                <element plat="p01" />
+                <element plat="p04" />
+                <element plat="p05" />
+            </menu>
+            <menu>
+                <titre>Menu Découverte</titre>
+                <menuDescription>Un menu varié pour les gourmets curieux.</menuDescription>
+                <prix devise="FCFA">15000</prix>
+                <element plat="p02" />
+                <element plat="p03" />
+                <element plat="p05" />
+            </menu>
+        </menus>
+    </restaurant>
+    
+    
+
     <restaurant id="r669aa617b21b2">
         <coordonnees>
             <nom>Restaurant isekai</nom>
