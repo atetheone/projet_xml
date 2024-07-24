@@ -16,9 +16,11 @@
 
     <div class="menu-elements-container">
       <select id="menuElements" multiple>
-        <?php foreach ($restaurant->carte->plats as $plat): ?>
-          <option value="<?= $plat->id; ?>"><?= htmlspecialchars($plat->nom); ?></option>
-        <?php endforeach; ?>
+        <?php if (isset($restaurant->carte->plats)) : ?>
+          <?php foreach ($restaurant->carte->plats as $plat): ?>
+            <option value="<?= $plat->id; ?>"><?= htmlspecialchars($plat->nom); ?></option>
+          <?php endforeach; ?>
+        <?php endif; ?>
       </select>
     </div>
     <button class="btn btn-2" type="button" onclick="addMenu()">Ajouter un menu</button>
