@@ -86,7 +86,7 @@ class Plat {
   public $type;
   public $prix;
   public $devise;
-  public $description;
+  public $description = '';
 
   public function __construct($id, $nom, $type, $prix, $devise, $description) {
       $this->id = $id;
@@ -100,7 +100,7 @@ class Plat {
 
 class Menu {
   public $titre;
-  public $description;
+  public $description = '';
   public $prix;
   public $devise;
   public $elements = [];
