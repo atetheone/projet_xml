@@ -91,13 +91,14 @@ class RestaurantsModel {
 
     $carte = new Carte();
     foreach ($xmlRestaurant->carte->plat as $xmlPlat) {
+      $platDescription = isset($xmlPlat->platDescription) ? (string)$xmlPlat->platDescription : null;
       $carte->addPlat(new Plat(
         (string)$xmlPlat['id'],
         (string)$xmlPlat->nom,
         (string)$xmlPlat->type,
         (string)$xmlPlat->prix,
         (string)$xmlPlat->prix['devise'],
-        (string)$xmlPlat->platDescription
+        $platDescription
       ));
     }
 
@@ -109,9 +110,10 @@ class RestaurantsModel {
         foreach ($xmlMenu->element as $element) {
           $elements[] = (string)$element['plat'];
         }
+        $menuDescription = isset($xmlMenu->menuDescription) ? (string)$xmlMenu->menuDescription : null;
         $menus[] = new Menu(
           (string)$xmlMenu->titre,
-          (string)$xmlMenu->menuDescription,
+          $menuDescription,
           (string)$xmlMenu->prix,
           (string)$xmlMenu->prix['devise'],
           $elements
@@ -158,7 +160,9 @@ class RestaurantsModel {
       $xmlPlat->addChild('type', $plat->type);
       $xmlPrix = $xmlPlat->addChild('prix', $plat->prix);
       $xmlPrix->addAttribute('devise', (string)$plat->devise);
-      $xmlPlat->addChild('platDescription', $plat->description);
+      if (!empty($plat->description)) {
+        $xmlPlat->addChild('platDescription', $plat->description);
+      }
     }
 
     // Mise à jour des menus
@@ -169,7 +173,8 @@ class RestaurantsModel {
       foreach ($restaurant->menus as $menu) {
         $xmlMenu = $xmlMenus->addChild('menu');
         $xmlMenu->addChild('titre', $menu->titre);
-        $xmlMenu->addChild('menuDescription', $menu->description);
+        if (!empty($menu->description))
+          $xmlMenu->addChild('menuDescription', $menu->description);
         $xmlPrix = $xmlMenu->addChild('prix', $menu->prix);
         $xmlPrix->addAttribute('devise', (string)$menu->devise);
         foreach ($menu->elements as $element) {
