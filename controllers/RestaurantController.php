@@ -63,14 +63,14 @@ class RestaurantController {
 
     $carte = new Carte();
     foreach ($_POST['carte'] as $platData) {
-      $platId = $platData['id'] ?? 'p' . uniqid();
+      $platId = isset($platData['id']) ? $platData['id'] : 'p' . uniqid();
       $carte->addPlat(new Plat(
         $platId,
         $platData['nom'],
         $platData['type'],
         $platData['prix'],
         $platData['devise'],
-        $platData['description']
+        !empty($platData['description']) ? $platData['description'] : null
       ));
     }
 
@@ -86,7 +86,7 @@ class RestaurantController {
         }
         $menus[] = new Menu(
           $menuData['titre'],
-          $menuData['description'],
+          !empty($menuData['description']) ? $menuData['description'] : null,
           $menuData['prix'],
           $menuData['devise'] ?? 'FCFA',
           $elements
