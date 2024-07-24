@@ -1,5 +1,8 @@
 <div id="plats">
   <div class="plat">
+    <!-- Champ caché pour l'ID du plat -->
+    <input type="hidden" id="platId">
+    
     <label>Nom du plat:</label>
     <input type="text" id="platNom">
 
