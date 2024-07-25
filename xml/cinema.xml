@@ -1,64 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE cinema SYSTEM "cinema.dtd">
 <cinema>
-    <film id="f1">
-        <titre>Naruto Shippuden: The Movie</titre>
-        <duree heures="1" minutes="34" />
-        <genres>
-            <genre>Action</genre>
-            <genre> Animation</genre>
-            <genre> Aventure</genre>
-        </genres>
-        <realisateur>Hajime Kamegaki</realisateur>
-        <langue>VOSTFR (Japonais)</langue>
-        <acteurs>
-            <acteur>Junko Takeuchi</acteur>
-            <acteur> Chie Nakamura</acteur>
-        </acteurs>
-        <annee>2007</annee>
-        <notes>
-            <note source="IMDb">3.6</note>
-        </notes>
-        <synopsis>Naruto Uzumaki est chargé de protéger une prêtresse dont les visions du futur montrent sa propre mort imminente.</synopsis>
-        <horaires>
-            <horaire jour="lundi" heure="19" minute="00" />
-            <horaire jour="mardi" heure="20" minute="00" />
-            <horaire jour="vendredi" heure="18" minute="30" />
-            <horaire jour="dimanche" heure="22" minute="00" />
-        </horaires>
-    </film>
+    
 
     <film id="f2">
         <titre>Black Panther</titre>
-        <duree heures="2" minutes="14" />
-        <genres>
-            <genre>Action</genre>
-            <genre>Aventure</genre>
-            <genre>Science-fiction</genre>
-        </genres>
+        <duree heures="2" minutes="34"/>
+        <genres><genre>Action</genre><genre> Aventure</genre><genre> Science-fiction</genre></genres>
         <realisateur>Ryan Coogler</realisateur>
         <langue>VO (Anglais)</langue>
-        <acteurs>
-            <acteur>Chadwick Boseman</acteur>
-            <acteur>Lupita Nyong'o</acteur>
-            <acteur>Michael B. Jordan</acteur>
-        </acteurs>
+        <acteurs><acteur>Chadwick Boseman</acteur><acteur> Lupita Nyong'o</acteur><acteur> Michael B. Jordan</acteur></acteurs>
         <annee>2018</annee>
-        <notes>
-            <note source="IMDb">3.7</note>
-            <note source="Rotten Tomatoes">4.8</note>
-        </notes>
+        <notes><note source="IMDb">3.7</note><note source="Rotten Tomatoes">4.8</note></notes>
         <synopsis>T'Challa revient chez lui pour être couronné roi du Wakanda, mais il doit faire face à un adversaire qui menace le destin de son peuple et du monde entier.</synopsis>
-        <horaires>
-            <horaire jour="mercredi" heure="20" minute="00" />
-            <horaire jour="jeudi" heure="21" minute="00" />
-            <horaire jour="samedi" heure="16" minute="00" />
-        </horaires>
+        <horaires><horaire jour="jeudi" heure="21" minute="00"/><horaire jour="samedi" heure="16" minute="00"/></horaires>
     </film>
 
     <film id="f3">
         <titre>Parasite</titre>
-        <duree heures="2" minutes="12" />
+        <duree heures="2" minutes="12"/>
         <genres>
             <genre>Drame</genre>
             <genre>Thriller</genre>
@@ -77,15 +37,15 @@
         </notes>
         <synopsis>La famille Kim, sans le sou, s'immisce dans la vie des riches Park, mais leur plan élaboré prend une tournure inattendue.</synopsis>
         <horaires>
-            <horaire jour="mardi" heure="19" minute="00" />
-            <horaire jour="jeudi" heure="18" minute="30" />
-            <horaire jour="dimanche" heure="20" minute="00" />
+            <horaire jour="mardi" heure="19" minute="00"/>
+            <horaire jour="jeudi" heure="18" minute="30"/>
+            <horaire jour="dimanche" heure="20" minute="00"/>
         </horaires>
     </film>
 
     <film id="f4">
         <titre>The Lion King</titre>
-        <duree heures="1" minutes="58" />
+        <duree heures="1" minutes="58"/>
         <genres>
             <genre>Animation</genre>
             <genre>Aventure</genre>
@@ -105,15 +65,15 @@
         </notes>
         <synopsis>Après la mort de son père, un jeune lion nommé Simba doit reprendre sa place légitime en tant que roi de la Terre des Lions.</synopsis>
         <horaires>
-            <horaire jour="lundi" heure="17" minute="00" />
-            <horaire jour="mercredi" heure="19" minute="30" />
-            <horaire jour="samedi" heure="14" minute="00" />
+            <horaire jour="lundi" heure="17" minute="00"/>
+            <horaire jour="mercredi" heure="19" minute="30"/>
+            <horaire jour="samedi" heure="14" minute="00"/>
         </horaires>
     </film>
 
     <film id="f5">
         <titre>Inception</titre>
-        <duree heures="2" minutes="28" />
+        <duree heures="2" minutes="28"/>
         <genres>
             <genre>Action</genre>
             <genre>Science-fiction</genre>
@@ -133,9 +93,9 @@
         </notes>
         <synopsis>Dom Cobb, un voleur qui infiltre les rêves pour dérober des secrets, est engagé pour une mission de plantage d'idée : l'inception.</synopsis>
         <horaires>
-            <horaire jour="vendredi" heure="21" minute="00" />
-            <horaire jour="samedi" heure="18" minute="00" />
-            <horaire jour="dimanche" heure="19" minute="00" />
+            <horaire jour="vendredi" heure="21" minute="00"/>
+            <horaire jour="samedi" heure="18" minute="00"/>
+            <horaire jour="dimanche" heure="19" minute="00"/>
         </horaires>
     </film>
-</cinema>
+<film id="f66a172cf0a8a0"><titre>Avatar</titre><duree heures="1" minutes="30"/><genres><genre>Action</genre></genres><realisateur>James Cameron</realisateur><langue>Français</langue><acteurs><acteur>Até</acteur><acteur> Alain</acteur></acteurs><annee>2010</annee><notes><note source="spectateur">4</note><note source="presse">5</note></notes><synopsis>RAS</synopsis><horaires><horaire jour="mercredi" heure="18" minute="30"/><horaire jour="lundi" heure="19" minute="00"/></horaires></film></cinema>
